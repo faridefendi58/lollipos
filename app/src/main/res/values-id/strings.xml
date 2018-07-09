@@ -28,6 +28,7 @@
     <string name="inventory">Inventory</string>
     <string name="sale">Penjualan</string>
     <string name="report">Laporan</string>
+    <string name="language">Bahasa</string>
 
     <string name="dialog_quit">Anda yakin ingin KELUAR?</string>
     <string name="dialog_remove_product">Anda yakin ingin MENGHAPUS produk ini?</string>
