@@ -1,6 +1,7 @@
 package id.web.jagungbakar.lollipos.ui.sale;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,6 +12,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +24,12 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import id.web.jagungbakar.lollipos.R;
+import id.web.jagungbakar.lollipos.domain.CurrencyController;
+import id.web.jagungbakar.lollipos.domain.LanguageController;
 import id.web.jagungbakar.lollipos.domain.inventory.LineItem;
 import id.web.jagungbakar.lollipos.domain.sale.Register;
 import id.web.jagungbakar.lollipos.techicalservices.NoDaoSetException;
@@ -129,7 +136,8 @@ public class SaleFragment extends UpdatableFragment {
 		for(LineItem line : list) {
 			saleList.add(line.toMap());
 		}
-		
+		//Log.e(getActivity().getLocalClassName(), "sale list : "+ saleList.toString());
+
 		SimpleAdapter sAdap;
 		sAdap = new SimpleAdapter(getActivity().getBaseContext(), saleList,
 				R.layout.listview_lineitem, new String[]{"name","quantity","price"}, new int[] {R.id.name,R.id.quantity,R.id.price});
@@ -184,7 +192,8 @@ public class SaleFragment extends UpdatableFragment {
 	public void update() {
 		if(register.hasSale()){
 			showList(register.getCurrentSale().getAllLineItem());
-			totalPrice.setText(register.getTotal() + "");
+
+			totalPrice.setText(CurrencyController.getInstance().moneyFormat(register.getTotal()) + "");
 		}
 		else{
 			showList(new ArrayList<LineItem>());
@@ -222,5 +231,4 @@ public class SaleFragment extends UpdatableFragment {
 
 		dialog.show();
 	}
-
 }

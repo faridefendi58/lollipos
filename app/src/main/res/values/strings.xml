@@ -23,6 +23,7 @@
     <string name="hint_cash">Enter cash here</string>
     <string name="add_new_product">Add New Product</string>
     <string name="add_stock">Add A Product Lot</string>
+    <string name="add_discount">Add A Product Discount</string>
     <string name="previous">&lt;</string>
     <string name="next">></string>
     <string name="inventory">Inventory</string>
@@ -36,8 +37,9 @@
     <string name="hint_empty_sale">Sale is empty.</string>
     <string name="quit">Quit</string>
     <string name="no">No</string>
-    <string name="product_detail">Product Detail</string>
+    <string name="product_detail">Detail</string>
     <string name="stock">Stock</string>
+    <string name="product_discount">Discount</string>
     <string name="success">Success</string>
     <string name="fail">Fail</string>
     <string name="please_input_all">Please fulfill all data.</string>
@@ -48,9 +50,13 @@
     <string name="title_notifications">Notifications</string>
 
     <string name="lang_en">English</string>
-    <string name="lang_id">Bahasa Indonesia (id)</string>
+    <string name="lang_id">Bahasa Indonesia</string>
     <string name="hint_lang">Please restart the application to apply this language settings.</string>
-    
+
+    <string name="currency">Currency</string>
+    <string name="currency_idr">IDR</string>
+    <string name="currency_usd">USD</string>
+
     
     <string-array name="period">
         <item>Daily</item>

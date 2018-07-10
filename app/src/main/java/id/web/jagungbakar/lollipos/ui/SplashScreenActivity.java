@@ -14,6 +14,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 
 import id.web.jagungbakar.lollipos.R;
+import id.web.jagungbakar.lollipos.domain.CurrencyController;
 import id.web.jagungbakar.lollipos.domain.DateTimeStrategy;
 import id.web.jagungbakar.lollipos.domain.LanguageController;
 import id.web.jagungbakar.lollipos.domain.inventory.Inventory;
@@ -36,7 +37,7 @@ import id.web.jagungbakar.lollipos.techicalservices.sale.SaleDaoAndroid;
  */
 public class SplashScreenActivity extends Activity {
 
-	public static final String POS_VERSION = "Mobile POS 0.8";
+	public static final String POS_VERSION = "LolliPOS 1.0";
 	private static final long SPLASH_TIMEOUT = 2000;
 	private Button goButton;
 	private boolean gone;
@@ -50,13 +51,15 @@ public class SplashScreenActivity extends Activity {
 		SaleDao saleDao = new SaleDaoAndroid(database);
 		DatabaseExecutor.setDatabase(database);
 		LanguageController.setDatabase(database);
+		CurrencyController.setDatabase(database);
 
 		Inventory.setInventoryDao(inventoryDao);
 		Register.setSaleDao(saleDao);
 		SaleLedger.setSaleDao(saleDao);
 		
-		DateTimeStrategy.setLocale("th", "TH");
+		DateTimeStrategy.setLocale("id", "ID");
 		setLanguage(LanguageController.getInstance().getLanguage());
+		CurrencyController.setCurrency("idr");
 
 		Log.d("Core App", "INITIATE");
 	}
@@ -116,5 +119,4 @@ public class SplashScreenActivity extends Activity {
 			}
 		}, SPLASH_TIMEOUT);
 	}
-
 }

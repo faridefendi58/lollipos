@@ -136,6 +136,8 @@ public class ProductDetailActivity extends Activity {
 				.setContent(R.id.tab1));
 		mTabHost.addTab(mTabHost.newTabSpec("tab_test2").setIndicator(res.getString(R.string.stock))
 				.setContent(R.id.tab2));
+		mTabHost.addTab(mTabHost.newTabSpec("tab_test3").setIndicator(res.getString(R.string.product_discount))
+				.setContent(R.id.tab3));
 		mTabHost.setCurrentTab(0);
 		popDialog = new AlertDialog.Builder(this);
 		inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);

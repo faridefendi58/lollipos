@@ -15,7 +15,9 @@
             android:id="@+id/sid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center" />
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"/>
     </TableRow>
 
     <TableRow
@@ -27,7 +29,9 @@
             android:id="@+id/startTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center" />
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"/>
     </TableRow>
 
     <TableRow
@@ -39,7 +43,9 @@
             android:id="@+id/total"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center" />
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"/>
     </TableRow>
 
 </LinearLayout>

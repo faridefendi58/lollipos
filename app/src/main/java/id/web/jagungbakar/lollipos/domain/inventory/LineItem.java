@@ -3,6 +3,9 @@ package id.web.jagungbakar.lollipos.domain.inventory;
 import java.util.HashMap;
 import java.util.Map;
 
+import id.web.jagungbakar.lollipos.domain.CurrencyController;
+import id.web.jagungbakar.lollipos.domain.LanguageController;
+
 /**
  * LineItem of Sale.
  * 
@@ -93,7 +96,7 @@ public class LineItem {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("name", product.getName());
 		map.put("quantity", quantity + "");
-		map.put("price", getTotalPriceAtSale() + "");
+		map.put("price", CurrencyController.getInstance().moneyFormat(getTotalPriceAtSale()) + "");
 		return map;
 
 	}

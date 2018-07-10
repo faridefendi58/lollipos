@@ -1,6 +1,10 @@
 package id.web.jagungbakar.lollipos.domain;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 import android.content.ContentValues;
 
@@ -59,8 +63,14 @@ public class LanguageController {
 	
 			return DEFAULT_LANGUAGE;
 		}
+
 		ContentValues content = (ContentValues) contents.get(0);
 		return content.getAsString("language");	
 	}
 
+	public Object getLanguages() {
+		List<Object> contents = database.select("SELECT * FROM " + DatabaseContents.LANGUAGE);
+
+		return contents;
+	}
 }

@@ -1,5 +1,9 @@
 package id.web.jagungbakar.lollipos.domain.sale;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Locale;
+
 import id.web.jagungbakar.lollipos.domain.DateTimeStrategy;
 import id.web.jagungbakar.lollipos.domain.inventory.Inventory;
 import id.web.jagungbakar.lollipos.domain.inventory.LineItem;

@@ -21,6 +21,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -28,6 +29,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import id.web.jagungbakar.lollipos.R;
+import id.web.jagungbakar.lollipos.domain.CurrencyController;
 import id.web.jagungbakar.lollipos.domain.LanguageController;
 import id.web.jagungbakar.lollipos.domain.inventory.Inventory;
 import id.web.jagungbakar.lollipos.domain.inventory.Product;
@@ -245,7 +247,7 @@ public class MainActivity extends FragmentActivity {
             	setLanguage("en");
                 return true;
             case R.id.lang_id:
-            	setLanguage("id");
+            	setLanguage("in");
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -262,8 +264,11 @@ public class MainActivity extends FragmentActivity {
 		Configuration config = new Configuration();
 		config.locale = locale;
 		LanguageController.getInstance().setLanguage(localeString);
+
 		getBaseContext().getResources().updateConfiguration(config,
 				getBaseContext().getResources().getDisplayMetrics());
+
+		//Log.e(MainActivity.class.getSimpleName(), "List Lang : "+ CurrencyController.getInstance().getCurrencies().toString());
 		Intent intent = getIntent();
 		finish();
 		startActivity(intent);

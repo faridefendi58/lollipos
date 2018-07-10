@@ -23,6 +23,7 @@
     <string name="hint_cash">Masukkan uang tunai di sini</string>
     <string name="add_new_product">Tambah Produk Baru</string>
     <string name="add_stock">Tambah Stok Produk</string>
+    <string name="add_discount">Tambah Diskon Produk</string>
     <string name="previous">&lt;</string>
     <string name="next">></string>
     <string name="inventory">Inventory</string>
@@ -36,8 +37,9 @@
     <string name="hint_empty_sale">Data penjualan kosong.</string>
     <string name="quit">Keluar</string>
     <string name="no">Tidak</string>
-    <string name="product_detail">Rincian Produk</string>
+    <string name="product_detail">Rincian</string>
     <string name="stock">Stok</string>
+    <string name="product_discount">Diskon</string>
     <string name="success">Berhasil</string>
     <string name="fail">Gagal</string>
     <string name="please_input_all">Silakan lengkapi semua data.</string>
@@ -48,9 +50,12 @@
     <string name="title_notifications">Notifikasi</string>
 
     <string name="lang_en">English</string>
-    <string name="lang_id">Bahasa Indonesia (id)</string>
-    <string name="hint_lang">Please restart the application to apply this language settings.</string>
+    <string name="lang_id">Bahasa Indonesia</string>
+    <string name="hint_lang">Silakan restart aplikasi untuk menerapkan pengaturan bahasa ini.</string>
 
+    <string name="currency">Mata Uang</string>
+    <string name="currency_idr">IDR</string>
+    <string name="currency_usd">USD</string>
 
     <string-array name="period">
         <item>Harian</item>
