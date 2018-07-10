@@ -46,11 +46,24 @@ public class Stock {
 	}
 
 	/**
+	 * Returns list of ProductDiscount in inventory finds by id.
+	 * @param id id of ProductDiscount.
+	 * @return list of ProductDiscount in inventory finds by id.
+	 */
+	public List<ProductDiscount> getProductDiscountByProductId(int id) {
+		return inventoryDao.getProductDiscountByProductId(id);
+	}
+
+	/**
 	 * Returns all ProductLots in inventory.
 	 * @return all ProductLots in inventory.
 	 */
 	public List<ProductLot> getAllProductLot() {
 		return inventoryDao.getAllProductLot();
+	}
+
+	public List<ProductDiscount> getAllProductDiscount() {
+		return inventoryDao.getAllProductDiscount();
 	}
 
 	/**
@@ -79,6 +92,18 @@ public class Stock {
 		inventoryDao.clearStock();
 		
 	}
-	
 
+	/**
+	 * Constructs ProductLot and adds ProductLot to inventory.
+	 * @param dateAdded date added of ProductLot.
+	 * @param quantity quantity of ProductLot.
+	 * @param product product of ProductLot.
+	 * @param cost cost of ProductLot.
+	 * @return
+	 */
+	public boolean addProductDiscount(String dateAdded, int quantity, Product product, double cost) {
+		ProductDiscount productDiscount = new ProductDiscount(ProductDiscount. UNDEFINED_ID, dateAdded, quantity, product, cost);
+		int id = inventoryDao.addProductDiscount(productDiscount);
+		return id != -1;
+	}
 }

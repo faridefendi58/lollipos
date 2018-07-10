@@ -22,11 +22,11 @@
     <string name="hint_search">Masukkan nama atau barcode</string>
     <string name="hint_cash">Masukkan uang tunai di sini</string>
     <string name="add_new_product">Tambah Produk Baru</string>
-    <string name="add_stock">Tambah Stok Produk</string>
-    <string name="add_discount">Tambah Diskon Produk</string>
+    <string name="add_stock">Tambah Stok</string>
+    <string name="add_discount">Tambah Diskon</string>
     <string name="previous">&lt;</string>
     <string name="next">></string>
-    <string name="inventory">Inventory</string>
+    <string name="inventory">Persediaan</string>
     <string name="sale">Penjualan</string>
     <string name="report">Laporan</string>
     <string name="language">Bahasa</string>

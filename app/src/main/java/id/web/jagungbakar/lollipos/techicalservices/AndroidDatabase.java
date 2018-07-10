@@ -53,6 +53,17 @@ public class AndroidDatabase extends SQLiteOpenHelper implements Database {
 				
 				+ ");");
 		Log.d("CREATE DATABASE", "Create " + DatabaseContents.TABLE_STOCK + " Successfully.");
+
+		database.execSQL("CREATE TABLE "+ DatabaseContents.TABLE_PRODUCT_DISCOUNT + "("
+
+				+ "_id INTEGER PRIMARY KEY,"
+				+ "product_id INTEGER,"
+				+ "quantity INTEGER,"
+				+ "cost DOUBLE,"
+				+ "date_added DATETIME"
+
+				+ ");");
+		Log.d("CREATE DATABASE", "Create " + DatabaseContents.TABLE_PRODUCT_DISCOUNT + " Successfully.");
 		
 		database.execSQL("CREATE TABLE "+ DatabaseContents.TABLE_SALE + "("
 				
@@ -147,8 +158,10 @@ public class AndroidDatabase extends SQLiteOpenHelper implements Database {
 	public int insert(String tableName, Object content) {
 		try {
 			SQLiteDatabase database = this.getWritableDatabase();
+
 			int id = (int) database.insert(tableName, null,
 					(ContentValues) content);
+
 			database.close();
 			return id;
 		} catch (Exception e) {

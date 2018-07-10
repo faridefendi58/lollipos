@@ -7,9 +7,11 @@ import android.content.ContentValues;
 import android.util.Log;
 
 import id.web.jagungbakar.lollipos.domain.inventory.Product;
+import id.web.jagungbakar.lollipos.domain.inventory.ProductDiscount;
 import id.web.jagungbakar.lollipos.domain.inventory.ProductLot;
 import id.web.jagungbakar.lollipos.techicalservices.Database;
 import id.web.jagungbakar.lollipos.techicalservices.DatabaseContents;
+import id.web.jagungbakar.lollipos.ui.inventory.ProductDetailActivity;
 
 /**
  * DAO used by android for Inventory.
@@ -247,8 +249,66 @@ public class InventoryDaoAndroid implements InventoryDao {
 		content.put("unit_price", product.getUnitPrice());
 		database.update(DatabaseContents.TABLE_PRODUCT_CATALOG.toString(), content);
 	}
-	
 
+	@Override
+	public int addProductDiscount(ProductDiscount productDiscount) {
+		ContentValues content = new ContentValues();
+		content.put("date_added", productDiscount.getDateAdded());
+		content.put("quantity",  productDiscount.getQuantity());
+		content.put("product_id",  productDiscount.getProduct().getId());
+		content.put("cost",  productDiscount.unitCost());
 
+		Log.e(ProductDetailActivity.class.getSimpleName(), "COntent data : "+ content.toString());
+		int id = database.insert(DatabaseContents.TABLE_PRODUCT_DISCOUNT.toString(), content);
 
+		return id;
+	}
+
+	/**
+	 * Returns list of all ProductDiscount in inventory.
+	 * @param condition specific condition for get ProductDiscount.
+	 * @return list of all ProductDiscount in inventory.
+	 */
+	private List<ProductDiscount> getAllProductDiscount(String condition) {
+		String queryString = "SELECT * FROM " + DatabaseContents.TABLE_PRODUCT_DISCOUNT.toString() + condition;
+		List<ProductDiscount> list = toProductDiscountList(database.select(queryString));
+		return list;
+	}
+
+	/**
+	 * Converts list of object to list of ProductDiscount.
+	 * @param objectList list of object.
+	 * @return list of ProductDiscount.
+	 */
+	private List<ProductDiscount> toProductDiscountList(List<Object> objectList) {
+		List<ProductDiscount> list = new ArrayList<ProductDiscount>();
+		for (Object object: objectList) {
+			ContentValues content = (ContentValues) object;
+			int productId = content.getAsInteger("product_id");
+			Product product = getProductById(productId);
+			list.add(
+					new ProductDiscount(content.getAsInteger("_id"),
+							content.getAsString("date_added"),
+							content.getAsInteger("quantity"),
+							product,
+							content.getAsDouble("cost"))
+			);
+		}
+		return list;
+	}
+
+	@Override
+	public List<ProductDiscount> getProductDiscountByProductId(int id) {
+		return getAllProductDiscount(" WHERE product_id = " + id);
+	}
+
+	@Override
+	public List<ProductDiscount> getProductDiscountById(int id) {
+		return getAllProductDiscount(" WHERE _id = " + id);
+	}
+
+	@Override
+	public List<ProductDiscount> getAllProductDiscount() {
+		return getAllProductDiscount("");
+	}
 }

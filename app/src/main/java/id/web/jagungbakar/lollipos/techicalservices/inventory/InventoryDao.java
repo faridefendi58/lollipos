@@ -3,6 +3,7 @@ package id.web.jagungbakar.lollipos.techicalservices.inventory;
 import java.util.List;
 
 import id.web.jagungbakar.lollipos.domain.inventory.Product;
+import id.web.jagungbakar.lollipos.domain.inventory.ProductDiscount;
 import id.web.jagungbakar.lollipos.domain.inventory.ProductLot;
 
 /**
@@ -26,6 +27,13 @@ public interface InventoryDao {
 	 * @return id of this ProductLot that assigned from database.
 	 */
 	int addProductLot(ProductLot productLot);
+
+	/**
+	 * Adds ProductDiscount to inventory.
+	 * @param productDiscount the ProductDiscount to be added.
+	 * @return id of this ProductDiscount that assigned from database.
+	 */
+	int addProductDiscount(ProductDiscount productDiscount);
 
 	/**
 	 * Edits product.
@@ -73,21 +81,32 @@ public interface InventoryDao {
 	 * @return list of all products in inventory.
 	 */
 	List<ProductLot> getAllProductLot();
-	
+
+	List<ProductDiscount> getAllProductDiscount();
+
 	/**
 	 * Returns list of product in inventory finds by id. 
 	 * @param id id of product.
 	 * @return list of product in inventory finds by id.
 	 */
 	List<ProductLot> getProductLotById(int id);
-	
+
+	List<ProductDiscount> getProductDiscountById(int id);
+
 	/**
 	 * Returns list of ProductLot in inventory finds by id. 
 	 * @param id id of ProductLot.
 	 * @return list of ProductLot in inventory finds by id.
 	 */
 	List<ProductLot> getProductLotByProductId(int id);
-	
+
+	/**
+	 *
+	 * @param id
+	 * @return
+	 */
+	List<ProductDiscount> getProductDiscountByProductId(int id);
+
 	/**
 	 * Returns Stock in inventory finds by id.
 	 * @param id id of Stock.

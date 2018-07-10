@@ -1,6 +1,7 @@
 package id.web.jagungbakar.lollipos.ui.sale;
 
 import id.web.jagungbakar.lollipos.R;
+import id.web.jagungbakar.lollipos.domain.CurrencyController;
 import id.web.jagungbakar.lollipos.ui.component.UpdatableFragment;
 
 import android.annotation.SuppressLint;
@@ -45,7 +46,12 @@ public class PaymentFragmentDialog extends DialogFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.dialog_payment, container,false);
-		strtext=getArguments().getString("edttext");
+		strtext = getArguments().getString("edttext");
+		String currency = CurrencyController.getInstance().getCurrency();
+		if (currency.equals("idr")) {
+			strtext = strtext.replaceAll("\\.", "");
+		}
+
 		input = (EditText) v.findViewById(R.id.dialog_saleInput);
 		totalPrice = (TextView) v.findViewById(R.id.payment_total);
 		totalPrice.setText(strtext);

@@ -11,6 +11,7 @@ public enum DatabaseContents {
 	DATABASE("id.web.jagungbakar.db1"),
 	TABLE_PRODUCT_CATALOG("product_catalog"),
 	TABLE_STOCK("stock"),
+	TABLE_PRODUCT_DISCOUNT("product_discount"),
 	TABLE_SALE("sale"),
 	TABLE_SALE_LINEITEM("sale_lineitem"),
 	TABLE_STOCK_SUM("stock_sum"),

@@ -32,6 +32,7 @@ import id.web.jagungbakar.lollipos.domain.DateTimeStrategy;
 import id.web.jagungbakar.lollipos.domain.inventory.Inventory;
 import id.web.jagungbakar.lollipos.domain.inventory.Product;
 import id.web.jagungbakar.lollipos.domain.inventory.ProductCatalog;
+import id.web.jagungbakar.lollipos.domain.inventory.ProductDiscount;
 import id.web.jagungbakar.lollipos.domain.inventory.ProductLot;
 import id.web.jagungbakar.lollipos.domain.inventory.Stock;
 import id.web.jagungbakar.lollipos.techicalservices.NoDaoSetException;
@@ -48,16 +49,19 @@ public class ProductDetailActivity extends Activity {
 	private Stock stock;
 	private Product product;
 	private List<Map<String, String>> stockList;
+	private List<Map<String, String>> discountList;
 	private EditText nameBox;
 	private EditText barcodeBox;
 	private TextView stockSumBox;
 	private EditText priceBox;
 	private Button addProductLotButton;
+	private Button addProductDiscountButton;
 	private Button submitEditButton;
 	private Button cancelEditButton;
 	private Button openEditButton;
 	private TabHost mTabHost;
 	private ListView stockListView;
+	private ListView discountListView;
 	private String id;
 	private String[] remember;
 	private AlertDialog.Builder popDialog;
@@ -119,6 +123,7 @@ public class ProductDetailActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.layout_productdetail_main);
 		stockListView = (ListView) findViewById(R.id.stockListView);
+		discountListView = (ListView) findViewById(R.id.discountListView);
 		nameBox = (EditText) findViewById(R.id.nameBox);
 		priceBox = (EditText) findViewById(R.id.priceBox);
 		barcodeBox = (EditText) findViewById(R.id.barcodeBox);
@@ -130,6 +135,7 @@ public class ProductDetailActivity extends Activity {
 		openEditButton = (Button) findViewById(R.id.openEditButton);
 		openEditButton.setVisibility(View.VISIBLE);
 		addProductLotButton = (Button) findViewById(R.id.addProductLotButton);
+		addProductDiscountButton = (Button) findViewById(R.id.addProductDiscountButton);
 		mTabHost = (TabHost) findViewById(android.R.id.tabhost);
 		mTabHost.setup();
 		mTabHost.addTab(mTabHost.newTabSpec("tab_test1").setIndicator(res.getString(R.string.product_detail))
@@ -164,6 +170,12 @@ public class ProductDetailActivity extends Activity {
 				cancelEdit();
 			}
 		});
+
+		addProductDiscountButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				showAddProductDiscount();
+			}
+		});
 	}
 
 	/**
@@ -184,12 +196,31 @@ public class ProductDetailActivity extends Activity {
 		stockListView.setAdapter(sAdap);
 	}
 
+	/**
+	 * Show list discount.
+	 * @param list
+	 */
+	private void showListDiscount(List<ProductDiscount> list) {
+
+		discountList = new ArrayList<Map<String, String>>();
+		for (ProductDiscount productDiscount : list) {
+			discountList.add(productDiscount.toMap());
+		}
+
+		SimpleAdapter sAdap = new SimpleAdapter(ProductDetailActivity.this, discountList,
+				R.layout.listview_discount, new String[] { "dateAdded",
+				"cost", "quantity" }, new int[] {
+				R.id.dateAdded, R.id.cost, R.id.quantity, });
+		discountListView.setAdapter(sAdap);
+	}
+
 	@Override
 	protected void onResume() {
 		super.onResume();
 		int productId = Integer.parseInt(id);
 		stockSumBox.setText(stock.getStockSumById(productId)+"");
 		showList(stock.getProductLotByProductId(productId));
+		showListDiscount(stock.getProductDiscountByProductId(productId));
 	}
 
 	@Override
@@ -329,6 +360,64 @@ public class ProductDetailActivity extends Activity {
 			}
 		});
 		
+		alert = popDialog.create();
+		alert.show();
+	}
+
+	private void showAddProductDiscount(){
+		Viewlayout = inflater.inflate(R.layout.layout_addproductdiscount,
+				(ViewGroup) findViewById(R.id.addProductDiscount_dialog));
+		popDialog.setView(Viewlayout);
+
+		costBox = (EditText) Viewlayout.findViewById(R.id.costBox);
+		quantityBox = (EditText) Viewlayout.findViewById(R.id.quantityBox);
+		confirmButton = (Button) Viewlayout.findViewById(R.id.confirmButton);
+		clearButton = (Button) Viewlayout.findViewById(R.id.clearButton);
+		confirmButton.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				if (quantityBox.getText().toString().equals("") || costBox.getText().toString().equals("")) {
+					Toast.makeText(ProductDetailActivity.this,
+							res.getString(R.string.please_input_all), Toast.LENGTH_SHORT)
+							.show();
+				} else {
+					boolean success = stock.addProductDiscount(
+							DateTimeStrategy.getCurrentTime(),
+							Integer.parseInt(quantityBox.getText().toString()),
+							product,
+							Double.parseDouble(costBox.getText().toString()));
+
+					if (success) {
+						Toast.makeText(ProductDetailActivity.this, res.getString(R.string.success), Toast.LENGTH_SHORT).show();
+						costBox.setText("");
+						quantityBox.setText("");
+						onResume();
+						alert.dismiss();
+
+
+					} else {
+						Toast.makeText(ProductDetailActivity.this, res.getString(R.string.fail) ,Toast.LENGTH_SHORT).show();
+					}
+				}
+
+			}
+		});
+		clearButton.setOnClickListener(new View.OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				if(quantityBox.getText().toString().equals("") && costBox.getText().toString().equals("")){
+					alert.dismiss();
+					onResume();
+				}
+				else{
+					costBox.setText("");
+					quantityBox.setText("");
+				}
+			}
+		});
+
 		alert = popDialog.create();
 		alert.show();
 	}
