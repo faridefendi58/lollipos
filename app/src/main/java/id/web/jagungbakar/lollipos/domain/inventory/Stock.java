@@ -94,15 +94,16 @@ public class Stock {
 	}
 
 	/**
-	 * Constructs ProductLot and adds ProductLot to inventory.
-	 * @param dateAdded date added of ProductLot.
-	 * @param quantity quantity of ProductLot.
-	 * @param product product of ProductLot.
-	 * @param cost cost of ProductLot.
+	 * Constructs ProductLot and adds ProductDiscount to inventory.
+	 * @param dateAdded date added of ProductDiscount.
+	 * @param quantity quantity of ProductDiscount.
+	 * @param quantity_max quantity of ProductDiscount.
+	 * @param product product of ProductDiscount.
+	 * @param cost cost of ProductDiscount.
 	 * @return
 	 */
-	public boolean addProductDiscount(String dateAdded, int quantity, Product product, double cost) {
-		ProductDiscount productDiscount = new ProductDiscount(ProductDiscount. UNDEFINED_ID, dateAdded, quantity, product, cost);
+	public boolean addProductDiscount(String dateAdded, int quantity, int quantity_max, Product product, double cost) {
+		ProductDiscount productDiscount = new ProductDiscount(ProductDiscount. UNDEFINED_ID, dateAdded, quantity, quantity_max, product, cost);
 		int id = inventoryDao.addProductDiscount(productDiscount);
 		return id != -1;
 	}

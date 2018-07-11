@@ -69,6 +69,7 @@ public class ProductDetailActivity extends Activity {
 	private Resources res;
 	private EditText costBox;
 	private EditText quantityBox;
+	private EditText quantityMaxBox;
 	private Button confirmButton;
 	private Button clearButton;
 	private View Viewlayout;
@@ -208,9 +209,10 @@ public class ProductDetailActivity extends Activity {
 		}
 
 		SimpleAdapter sAdap = new SimpleAdapter(ProductDetailActivity.this, discountList,
-				R.layout.listview_discount, new String[] { "dateAdded",
-				"cost", "quantity" }, new int[] {
-				R.id.dateAdded, R.id.cost, R.id.quantity, });
+				R.layout.listview_discount, new String[] {
+				"quantity", "quantity_max", "cost" },
+				new int[] {
+						R.id.quantity, R.id.quantity_max, R.id.cost });
 		discountListView.setAdapter(sAdap);
 	}
 
@@ -371,6 +373,7 @@ public class ProductDetailActivity extends Activity {
 
 		costBox = (EditText) Viewlayout.findViewById(R.id.costBox);
 		quantityBox = (EditText) Viewlayout.findViewById(R.id.quantityBox);
+		quantityMaxBox = (EditText) Viewlayout.findViewById(R.id.quantityMaxBox);
 		confirmButton = (Button) Viewlayout.findViewById(R.id.confirmButton);
 		clearButton = (Button) Viewlayout.findViewById(R.id.clearButton);
 		confirmButton.setOnClickListener(new View.OnClickListener() {
@@ -385,6 +388,7 @@ public class ProductDetailActivity extends Activity {
 					boolean success = stock.addProductDiscount(
 							DateTimeStrategy.getCurrentTime(),
 							Integer.parseInt(quantityBox.getText().toString()),
+							Integer.parseInt(quantityMaxBox.getText().toString()),
 							product,
 							Double.parseDouble(costBox.getText().toString()));
 

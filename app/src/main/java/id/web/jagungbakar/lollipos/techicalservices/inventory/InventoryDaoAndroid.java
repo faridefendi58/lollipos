@@ -255,6 +255,7 @@ public class InventoryDaoAndroid implements InventoryDao {
 		ContentValues content = new ContentValues();
 		content.put("date_added", productDiscount.getDateAdded());
 		content.put("quantity",  productDiscount.getQuantity());
+		content.put("quantity_max",  productDiscount.getQuantityMax());
 		content.put("product_id",  productDiscount.getProduct().getId());
 		content.put("cost",  productDiscount.unitCost());
 
@@ -290,6 +291,7 @@ public class InventoryDaoAndroid implements InventoryDao {
 					new ProductDiscount(content.getAsInteger("_id"),
 							content.getAsString("date_added"),
 							content.getAsInteger("quantity"),
+							content.getAsInteger("quantity_max"),
 							product,
 							content.getAsDouble("cost"))
 			);

@@ -16,6 +16,7 @@ public class ProductDiscount {
     private int id;
     private String dateAdded;
     private int quantity;
+    private int quantity_max;
     private Product product;
     private double unitCost;
 
@@ -25,70 +26,76 @@ public class ProductDiscount {
     public static final int UNDEFINED_ID = -1;
 
     /**
-     * Constructs a new ProductLot.
-     * @param id ID of the ProductLot, This value should be assigned from database.
+     * Constructs a new ProductDiscount.
+     * @param id ID of the ProductDiscount, This value should be assigned from database.
      * @param dateAdded date and time of adding this lot.
      * @param quantity quantity of product.
      * @param product a product of this lot.
      * @param unitCost cost (of buy) of each unit in this lot.
      */
-    public ProductDiscount(int id, String dateAdded, int quantity, Product product, double unitCost) {
+    public ProductDiscount(int id, String dateAdded, int quantity, int quantity_max, Product product, double unitCost) {
         this.id = id;
         this.dateAdded = dateAdded;
         this.quantity = quantity;
+        this.quantity_max = quantity_max;
         this.product = product;
         this.unitCost = unitCost;
     }
 
     /**
-     * Returns date added of this ProductLot.
-     * @return date added of this ProductLot.
+     * Returns date added of this ProductDiscount.
+     * @return date added of this ProductDiscount.
      */
     public String getDateAdded() {
         return dateAdded;
     }
 
     /**
-     * Returns quantity of this ProductLot.
-     * @return quantity of this ProductLot.
+     * Returns quantity of this ProductDiscount.
+     * @return quantity of this ProductDiscount.
      */
     public int getQuantity() {
         return quantity;
     }
+    
+    public int getQuantityMax() {
+        return quantity_max;
+    }
 
     /**
-     * Returns cost of this ProductLot.
-     * @return cost of this ProductLot.
+     * Returns cost of this ProductDiscount.
+     * @return cost of this ProductDiscount.
      */
     public double unitCost() {
         return unitCost;
     }
 
     /**
-     * Returns id of this ProductLot.
-     * @return id of this ProductLot.
+     * Returns id of this ProductDiscount.
+     * @return id of this ProductDiscount.
      */
     public int getId() {
         return id;
     }
 
     /**
-     * Returns product in this ProductLot.
-     * @return product in this ProductLot.
+     * Returns product in this ProductDiscount.
+     * @return product in this ProductDiscount.
      */
     public Product getProduct() {
         return product;
     }
 
     /**
-     * Returns the description of this ProductLot in Map format.
-     * @return the description of this ProductLot in Map format.
+     * Returns the description of this ProductDiscount in Map format.
+     * @return the description of this ProductDiscount in Map format.
      */
     public Map<String, String> toMap() {
         Map<String, String> map = new HashMap<String, String>();
         map.put("id", id + "");
         map.put("dateAdded", DateTimeStrategy.format(dateAdded));
         map.put("quantity", quantity + "");
+        map.put("quantity_max", quantity_max + "");
         map.put("productName", product.getName());
         map.put("cost", unitCost + "");
         return map;

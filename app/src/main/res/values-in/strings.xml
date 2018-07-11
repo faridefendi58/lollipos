@@ -12,6 +12,7 @@
     <string name="date">Tanggal</string>
     <string name="date_added">Tanggal Ditambahkan</string>
     <string name="quantity">Jumlah</string>
+    <string name="quantity_max">Jumlah Maksimum</string>
     <string name="remove">Hapus</string>
     <string name="scan">Scan</string>
     <string name="unit_price">Unit Price</string>
