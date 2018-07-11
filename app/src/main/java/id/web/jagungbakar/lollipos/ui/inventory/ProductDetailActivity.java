@@ -13,12 +13,14 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -26,6 +28,8 @@ import android.widget.SimpleAdapter;
 import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.json.JSONObject;
 
 import id.web.jagungbakar.lollipos.R;
 import id.web.jagungbakar.lollipos.domain.DateTimeStrategy;
@@ -36,6 +40,8 @@ import id.web.jagungbakar.lollipos.domain.inventory.ProductDiscount;
 import id.web.jagungbakar.lollipos.domain.inventory.ProductLot;
 import id.web.jagungbakar.lollipos.domain.inventory.Stock;
 import id.web.jagungbakar.lollipos.techicalservices.NoDaoSetException;
+import id.web.jagungbakar.lollipos.ui.component.UpdatableFragment;
+import id.web.jagungbakar.lollipos.ui.sale.SaleFragment;
 
 /**
  * UI for shows the datails of each Product.
@@ -46,6 +52,7 @@ import id.web.jagungbakar.lollipos.techicalservices.NoDaoSetException;
 public class ProductDetailActivity extends Activity {
 
 	private ProductCatalog productCatalog;
+	private ProductDiscount productDiscount;
 	private Stock stock;
 	private Product product;
 	private List<Map<String, String>> stockList;
@@ -214,6 +221,8 @@ public class ProductDetailActivity extends Activity {
 				new int[] {
 						R.id.quantity, R.id.quantity_max, R.id.cost });
 		discountListView.setAdapter(sAdap);
+
+		triggerDiscountList();
 	}
 
 	@Override
@@ -424,5 +433,74 @@ public class ProductDetailActivity extends Activity {
 
 		alert = popDialog.create();
 		alert.show();
+	}
+
+	private void triggerDiscountList() {
+		discountListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+				showEditPopup(arg1,arg2);
+			}
+		});
+	}
+
+	private void showEditPopup(View anchorView, int position)
+	{
+		Log.e("Edit discount", "discount list : "+ discountList.get(position).toString());
+		AlertDialog.Builder builder = new AlertDialog.Builder(ProductDetailActivity.this);
+		View mView = getLayoutInflater().inflate(R.layout.dialog_discountedit, null);
+
+		EditText quantityBox = (EditText) mView.findViewById(R.id.quantityBox);
+		quantityBox.setText(discountList.get(position).get("quantity"));
+
+		EditText quantityMaxBox = (EditText) mView.findViewById(R.id.quantityMaxBox);
+		quantityMaxBox.setText(discountList.get(position).get("quantity_max"));
+
+		EditText priceBox = (EditText) mView.findViewById(R.id.priceBox);
+		priceBox.setText(discountList.get(position).get("cost"));
+
+		TextView discount_id = (TextView) mView.findViewById(R.id.discount_id);
+		discount_id.setText(discountList.get(position).get("id"));
+
+		builder.setView(mView);
+		AlertDialog dialog = builder.create();
+
+		triggerSubmitUpdateDiscount(mView, dialog);
+
+		dialog.show();
+	}
+
+	private void triggerSubmitUpdateDiscount(View view, final AlertDialog dialog) {
+		final EditText quantityBox = (EditText) view.findViewById(R.id.quantityBox);
+		final EditText quantityMaxBox = (EditText) view.findViewById(R.id.quantityMaxBox);
+		final EditText priceBox = (EditText) view.findViewById(R.id.priceBox);
+		final TextView discount_id = (TextView) view.findViewById(R.id.discount_id);
+
+		Button confirmButton = (Button) view.findViewById(R.id.confirmButton);
+		confirmButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				stock.updateProductDiscount(
+						Integer.parseInt(discount_id.getText().toString()),
+						Integer.parseInt(quantityBox.getText().toString()),
+						Integer.parseInt(quantityMaxBox.getText().toString()),
+						Double.parseDouble(priceBox.getText().toString())
+				);
+
+				onResume();
+				dialog.hide();
+			}
+		});
+
+		Button removeButton = (Button) view.findViewById(R.id.removeButton);
+		removeButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				stock.deleteProductDiscount(Integer.parseInt(discount_id.getText().toString()));
+
+				onResume();
+				dialog.hide();
+			}
+		});
 	}
 }

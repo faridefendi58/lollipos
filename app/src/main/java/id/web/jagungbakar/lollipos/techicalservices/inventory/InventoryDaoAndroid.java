@@ -313,4 +313,20 @@ public class InventoryDaoAndroid implements InventoryDao {
 	public List<ProductDiscount> getAllProductDiscount() {
 		return getAllProductDiscount("");
 	}
+
+	@Override
+	public void updateProductDiscount(int id, int quantity, int quantity_max, double cost) {
+		ContentValues content = new ContentValues();
+		content.put("_id", id);
+		content.put("quantity", quantity);
+		content.put("quantity_max", quantity_max);
+		content.put("cost", cost);
+
+		database.update(DatabaseContents.TABLE_PRODUCT_DISCOUNT.toString(), content);
+	}
+
+	@Override
+	public void deleteProductDiscount(int id) {
+		database.delete(DatabaseContents.TABLE_PRODUCT_DISCOUNT.toString(), id);
+	}
 }
