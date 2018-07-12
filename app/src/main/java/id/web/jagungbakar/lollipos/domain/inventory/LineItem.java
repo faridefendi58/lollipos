@@ -106,7 +106,8 @@ public class LineItem {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("name", product.getName());
 		map.put("quantity", quantity + "");
-		map.put("price", CurrencyController.getInstance().moneyFormat(getTotalPriceAtSale()) + "");
+		//map.put("price", CurrencyController.getInstance().moneyFormat(getTotalPriceAtSale()) + "");
+		map.put("price", CurrencyController.getInstance().moneyFormat(getPriceAtSale()) + "");
 		return map;
 
 	}

@@ -17,6 +17,8 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import id.web.jagungbakar.lollipos.R;
+import id.web.jagungbakar.lollipos.domain.CurrencyController;
+import id.web.jagungbakar.lollipos.domain.DateTimeStrategy;
 import id.web.jagungbakar.lollipos.domain.inventory.LineItem;
 import id.web.jagungbakar.lollipos.domain.sale.Sale;
 import id.web.jagungbakar.lollipos.domain.sale.SaleLedger;
@@ -112,8 +114,8 @@ public class SaleDetailActivity extends Activity{
 	 * Update UI.
 	 */
 	public void update() {
-		totalBox.setText(sale.getTotal() + "");
-		dateBox.setText(sale.getEndTime() + "");
+		totalBox.setText(CurrencyController.getInstance().moneyFormat(sale.getTotal()) + "");
+		dateBox.setText(DateTimeStrategy.parseDate(sale.getEndTime(), "dd/MM/yy HH:s") + "");
 		showList(sale.getAllLineItem());
 	}
 	

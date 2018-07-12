@@ -1,7 +1,9 @@
 package id.web.jagungbakar.lollipos.domain;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 /**
@@ -55,4 +57,20 @@ public class DateTimeStrategy {
 		return dateFormat.format(instance.getTime()).toString().substring(0,10);
 	}
 
+	public static String parseDate(String time, String outputPattern) {
+		String inputPattern = "yyyy-MM-dd HH:mm:ss";
+		SimpleDateFormat inputFormat = new SimpleDateFormat(inputPattern);
+		SimpleDateFormat outputFormat = new SimpleDateFormat(outputPattern);
+
+		Date date = null;
+		String str = null;
+
+		try {
+			date = inputFormat.parse(time);
+			str = outputFormat.format(date);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return str;
+	}
 }
