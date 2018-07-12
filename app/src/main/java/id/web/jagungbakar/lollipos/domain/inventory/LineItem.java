@@ -18,6 +18,7 @@ public class LineItem {
 	private int quantity;
 	private int id;
 	private double unitPriceAtSale;
+	private double unitGrosirPrice;
 
 	/**
 	 * Static value for UNDEFINED ID.
@@ -46,6 +47,15 @@ public class LineItem {
 		this.product = product;
 		this.quantity = quantity;
 		this.unitPriceAtSale = unitPriceAtSale;
+
+		/*try {
+			unitGrosirPrice = product.getUnitPriceByQuantity(product.getId(), quantity);
+			if (unitGrosirPrice > 0) {
+				this.unitPriceAtSale = unitGrosirPrice;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}*/
 	}
 
 	/**

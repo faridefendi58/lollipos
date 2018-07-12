@@ -141,4 +141,5 @@ public interface InventoryDao {
 	 */
 	void suspendProduct(Product product);
 
+	double getUnitPriceByQuantity(int productId, int quantity);
 }

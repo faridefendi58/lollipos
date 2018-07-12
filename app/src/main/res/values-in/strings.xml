@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">LolliPOS</string>
+    <string name="grreting">Welcome To LolliPOS</string>
     <string name="action_settings">Peralatan</string>
     <string name="total">Total</string>
     <string name="barcode">Barcode</string>

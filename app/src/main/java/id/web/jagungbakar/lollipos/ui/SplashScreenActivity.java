@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import id.web.jagungbakar.lollipos.R;
 import id.web.jagungbakar.lollipos.domain.CurrencyController;
@@ -97,6 +99,10 @@ public class SplashScreenActivity extends Activity {
 		SplashScreenActivity.this.finish();	
 	}
 
+	private ProgressBar progressBar;
+	private int progressStatus = 0;
+	private Handler handler = new Handler();
+
 	/**
 	 * Initiate this UI.
 	 * @param savedInstanceState
@@ -112,6 +118,28 @@ public class SplashScreenActivity extends Activity {
 			}
 
 		});
+
+		progressBar = (ProgressBar) findViewById(R.id.progressBar);
+		// Start long running operation in a background thread
+		new Thread(new Runnable() {
+			public void run() {
+				while (progressStatus < 100) {
+					progressStatus += 5;
+					// Update the progress bar and display the
+					//current value in the text view
+					handler.post(new Runnable() {
+						public void run() {
+							progressBar.setProgress(progressStatus);
+						}
+					});
+					try {
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		}).start();
 		new Handler().postDelayed(new Runnable() {
 			@Override
 			public void run() {
