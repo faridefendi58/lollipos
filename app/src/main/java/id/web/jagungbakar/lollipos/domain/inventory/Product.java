@@ -2,6 +2,7 @@ package id.web.jagungbakar.lollipos.domain.inventory;
 
 import java.util.HashMap;
 import java.util.Map;
+import id.web.jagungbakar.lollipos.techicalservices.NoDaoSetException;
 
 /**
  * Product or item represents the real product in store.
@@ -114,5 +115,15 @@ public class Product {
 		return map;
 		
 	}
-	
+
+	public double getUnitPriceByQuantity(int id, int quantity) {
+		Double stock = 0.0;
+		try {
+			stock = Inventory.getInstance().getUnitPriceByQuantity(id, quantity);
+		} catch (NoDaoSetException e) {
+			e.printStackTrace();
+		}
+
+		return stock;
+	}
 }

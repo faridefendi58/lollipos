@@ -35,6 +35,10 @@ public interface InventoryDao {
 	 */
 	int addProductDiscount(ProductDiscount productDiscount);
 
+	void updateProductDiscount(int id, int quantity, int quantity_max, double cost);
+
+	void deleteProductDiscount(int id);
+
 	/**
 	 * Edits product.
 	 * @param product the product to be edited.
@@ -137,4 +141,5 @@ public interface InventoryDao {
 	 */
 	void suspendProduct(Product product);
 
+	double getUnitPriceByQuantity(int productId, int quantity);
 }

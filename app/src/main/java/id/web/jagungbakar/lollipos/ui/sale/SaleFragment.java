@@ -136,7 +136,7 @@ public class SaleFragment extends UpdatableFragment {
 		for(LineItem line : list) {
 			saleList.add(line.toMap());
 		}
-		//Log.e(getActivity().getLocalClassName(), "sale list : "+ saleList.toString());
+		Log.e(getActivity().getLocalClassName(), "sale list : "+ saleList.toString());
 
 		SimpleAdapter sAdap;
 		sAdap = new SimpleAdapter(getActivity().getBaseContext(), saleList,

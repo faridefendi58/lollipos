@@ -18,6 +18,7 @@ public class LineItem {
 	private int quantity;
 	private int id;
 	private double unitPriceAtSale;
+	private double unitGrosirPrice;
 
 	/**
 	 * Static value for UNDEFINED ID.
@@ -46,6 +47,15 @@ public class LineItem {
 		this.product = product;
 		this.quantity = quantity;
 		this.unitPriceAtSale = unitPriceAtSale;
+
+		/*try {
+			unitGrosirPrice = product.getUnitPriceByQuantity(product.getId(), quantity);
+			if (unitGrosirPrice > 0) {
+				this.unitPriceAtSale = unitGrosirPrice;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}*/
 	}
 
 	/**
@@ -96,7 +106,8 @@ public class LineItem {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("name", product.getName());
 		map.put("quantity", quantity + "");
-		map.put("price", CurrencyController.getInstance().moneyFormat(getTotalPriceAtSale()) + "");
+		//map.put("price", CurrencyController.getInstance().moneyFormat(getTotalPriceAtSale()) + "");
+		map.put("price", CurrencyController.getInstance().moneyFormat(getPriceAtSale()) + "");
 		return map;
 
 	}

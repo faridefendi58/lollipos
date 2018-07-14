@@ -313,4 +313,40 @@ public class InventoryDaoAndroid implements InventoryDao {
 	public List<ProductDiscount> getAllProductDiscount() {
 		return getAllProductDiscount("");
 	}
+
+	@Override
+	public void updateProductDiscount(int id, int quantity, int quantity_max, double cost) {
+		ContentValues content = new ContentValues();
+		content.put("_id", id);
+		content.put("quantity", quantity);
+		content.put("quantity_max", quantity_max);
+		content.put("cost", cost);
+
+		database.update(DatabaseContents.TABLE_PRODUCT_DISCOUNT.toString(), content);
+	}
+
+	@Override
+	public void deleteProductDiscount(int id) {
+		database.delete(DatabaseContents.TABLE_PRODUCT_DISCOUNT.toString(), id);
+	}
+
+	@Override
+	public double getUnitPriceByQuantity(int productId, int quantity) {
+		String queryString = "SELECT * FROM " +
+				DatabaseContents.TABLE_PRODUCT_DISCOUNT +
+				" WHERE product_id = " + productId + " AND "+ quantity +" BETWEEN quantity AND quantity_max;";
+
+		List<Object> objectList = (database.select(queryString));
+		Log.e("DB", "Object list : "+ objectList.toString());
+		Log.e("DB", "productId : "+ productId);
+		Log.e("DB", "quantity : "+ quantity);
+
+		Double cost = 0.0;
+		if (objectList.size() > 0) {
+			ContentValues content = (ContentValues) objectList.get(0);
+			cost = content.getAsDouble("cost");
+		}
+
+		return cost;
+	}
 }

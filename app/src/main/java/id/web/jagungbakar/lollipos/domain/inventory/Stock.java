@@ -107,4 +107,12 @@ public class Stock {
 		int id = inventoryDao.addProductDiscount(productDiscount);
 		return id != -1;
 	}
+
+	public void updateProductDiscount(int id, int quantity, int quantity_max, double cost) {
+		inventoryDao.updateProductDiscount(id, quantity, quantity_max, cost);
+	}
+
+	public void deleteProductDiscount(int id) {
+		inventoryDao.deleteProductDiscount(id);
+	}
 }

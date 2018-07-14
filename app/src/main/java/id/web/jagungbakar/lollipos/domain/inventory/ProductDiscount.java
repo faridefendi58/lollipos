@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import id.web.jagungbakar.lollipos.domain.DateTimeStrategy;
+import id.web.jagungbakar.lollipos.techicalservices.inventory.InventoryDao;
 
 /**
  * Lot or bunch of product that import to inventory.

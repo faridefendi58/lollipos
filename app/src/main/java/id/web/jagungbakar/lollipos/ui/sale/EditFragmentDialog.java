@@ -67,6 +67,7 @@ public class EditFragmentDialog extends DialogFragment {
 		lineItem = register.getCurrentSale().getLineItemAt(Integer.parseInt(position));
 		quantityBox.setText(lineItem.getQuantity()+"");
 		priceBox.setText(lineItem.getProduct().getUnitPrice()+"");
+
 		removeButton.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View arg0) {
@@ -79,12 +80,23 @@ public class EditFragmentDialog extends DialogFragment {
 		comfirmButton.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View view) {
-				register.updateItem(
-						Integer.parseInt(saleId),
-						lineItem,
-						Integer.parseInt(quantityBox.getText().toString()),
-						Double.parseDouble(priceBox.getText().toString())
-				);
+				Double grosir_price = lineItem.getProduct().getUnitPriceByQuantity(lineItem.getProduct().getId(), Integer.parseInt(quantityBox.getText().toString()));
+				if (grosir_price > 0) {
+					priceBox.setText(lineItem.getProduct().getUnitPrice()+"");
+					register.updateItem(
+							Integer.parseInt(saleId),
+							lineItem,
+							Integer.parseInt(quantityBox.getText().toString()),
+							grosir_price
+					);
+				} else {
+					register.updateItem(
+							Integer.parseInt(saleId),
+							lineItem,
+							Integer.parseInt(quantityBox.getText().toString()),
+							Double.parseDouble(priceBox.getText().toString())
+					);
+				}
 				
 				end();
 			}

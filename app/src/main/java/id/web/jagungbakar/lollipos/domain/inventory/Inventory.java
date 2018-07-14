@@ -71,4 +71,7 @@ public class Inventory {
 		return instance;
 	}
 
+	public double getUnitPriceByQuantity(int id, int quantity) {
+		return inventoryDao.getUnitPriceByQuantity(id, quantity);
+	}
 }

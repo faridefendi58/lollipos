@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import id.web.jagungbakar.lollipos.domain.CurrencyController;
+import id.web.jagungbakar.lollipos.domain.DateTimeStrategy;
 import id.web.jagungbakar.lollipos.domain.LanguageController;
 import id.web.jagungbakar.lollipos.domain.inventory.LineItem;
 import id.web.jagungbakar.lollipos.domain.inventory.Product;
@@ -135,8 +136,8 @@ public class Sale {
 	public Map<String, String> toMap() {	
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("id",id + "");
-		map.put("startTime", startTime);
-		map.put("endTime", endTime);
+		map.put("startTime", DateTimeStrategy.parseDate(startTime, "dd/MM/yy HH:s"));
+		map.put("endTime", DateTimeStrategy.parseDate(endTime, "dd/MM/yy HH:s"));
 		map.put("status", getStatus());
 		map.put("total", CurrencyController.getInstance().moneyFormat(getTotal()) + "");
 		map.put("orders", getOrders() + "");
