@@ -15,6 +15,7 @@ public enum DatabaseContents {
 	TABLE_SALE("sale"),
 	TABLE_SALE_LINEITEM("sale_lineitem"),
 	TABLE_STOCK_SUM("stock_sum"),
+	TABLE_CUSTOMER("customer"),
 	LANGUAGE("language"),
 	CURRENCY("currency");
 

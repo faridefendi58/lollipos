@@ -29,7 +29,6 @@ import android.view.MenuItem;
 import android.view.View;
 
 import id.web.jagungbakar.lollipos.R;
-import id.web.jagungbakar.lollipos.domain.CurrencyController;
 import id.web.jagungbakar.lollipos.domain.LanguageController;
 import id.web.jagungbakar.lollipos.domain.inventory.Inventory;
 import id.web.jagungbakar.lollipos.domain.inventory.Product;
@@ -40,6 +39,7 @@ import id.web.jagungbakar.lollipos.ui.inventory.InventoryFragment;
 import id.web.jagungbakar.lollipos.ui.inventory.ProductDetailActivity;
 import id.web.jagungbakar.lollipos.ui.sale.ReportFragment;
 import id.web.jagungbakar.lollipos.ui.sale.SaleFragment;
+import id.web.jagungbakar.lollipos.ui.customer.CustomerFragment;
 
 /**
  * This UI loads 3 main pages (Inventory, Sale, Report)
@@ -87,8 +87,10 @@ public class MainActivity extends FragmentActivity {
 					.setTabListener(tabListener), 0, false);
 			actionBar.addTab(actionBar.newTab().setText(res.getString(R.string.sale))
 					.setTabListener(tabListener), 1, true);
-			actionBar.addTab(actionBar.newTab().setText(res.getString(R.string.report))
+			actionBar.addTab(actionBar.newTab().setText(res.getString(R.string.customer))
 					.setTabListener(tabListener), 2, false);
+			actionBar.addTab(actionBar.newTab().setText(res.getString(R.string.report))
+					.setTabListener(tabListener), 3, false);
 	
 			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
 				actionBar.setStackedBackgroundDrawable(new ColorDrawable(Color
@@ -299,12 +301,15 @@ class PagerAdapter extends FragmentStatePagerAdapter {
 		UpdatableFragment saleFragment = new SaleFragment(reportFragment);
 		UpdatableFragment inventoryFragment = new InventoryFragment(
 				saleFragment);
+		UpdatableFragment customerFragment = new CustomerFragment(saleFragment);
 
 		fragments = new UpdatableFragment[] { inventoryFragment, saleFragment,
-				reportFragment };
+				customerFragment, reportFragment };
 		fragmentNames = new String[] { res.getString(R.string.inventory),
 				res.getString(R.string.sale),
-				res.getString(R.string.report) };
+				res.getString(R.string.customer),
+				res.getString(R.string.report)
+		};
 
 	}
 

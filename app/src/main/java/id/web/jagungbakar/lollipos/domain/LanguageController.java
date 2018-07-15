@@ -1,10 +1,6 @@
 package id.web.jagungbakar.lollipos.domain;
 
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.text.NumberFormat;
 import java.util.List;
-import java.util.Locale;
 
 import android.content.ContentValues;
 
@@ -47,6 +43,34 @@ public class LanguageController {
 	 */
 	public void setLanguage(String localeString) {
 		database.execute("UPDATE " + DatabaseContents.LANGUAGE + " SET language = '" + localeString + "'");
+		//database.execute("DELETE FROM " + DatabaseContents.TABLE_SALE_LINEITEM);
+		//database.execute("DELETE FROM " + DatabaseContents.TABLE_SALE);
+		/*database.execute("DROP TABLE " + DatabaseContents.TABLE_SALE);
+		database.execute("CREATE TABLE "+ DatabaseContents.TABLE_SALE + "("
+
+				+ "_id INTEGER PRIMARY KEY,"
+				+ "status TEXT(40),"
+				+ "payment TEXT(50),"
+				+ "total DOUBLE,"
+				+ "start_time DATETIME,"
+				+ "end_time DATETIME,"
+				+ "customer_id INTEGER,"
+				+ "orders INTEGER"
+
+				+ ");");
+		Log.d("CREATE DATABASE", "Create " + DatabaseContents.TABLE_SALE + " Successfully.");
+		/*database.execute("CREATE TABLE " + DatabaseContents.TABLE_CUSTOMER + "("
+
+				+ "_id INTEGER PRIMARY KEY,"
+				+ "name TEXT(100),"
+				+ "email TEXT(100),"
+				+ "phone TEXT(20),"
+				+ "address TEXT(256),"
+				+ "status INTEGER,"
+				+ "date_added DATETIME"
+
+				+ ");");
+		Log.d("CREATE DATABASE", "Create " + DatabaseContents.TABLE_CUSTOMER + " Successfully.");*/
 	}
 	
 	/**

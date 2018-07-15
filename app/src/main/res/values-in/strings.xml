@@ -9,6 +9,7 @@
     <string name="cancel">Batal</string>
     <string name="clear">Bersihkan</string>
     <string name="edit">Ubah</string>
+    <string name="save">Simpan</string>
     <string name="confirm">Selesai</string>
     <string name="date">Tanggal</string>
     <string name="date_added">Tanggal Ditambahkan</string>
@@ -18,20 +19,27 @@
     <string name="scan">Scan</string>
     <string name="unit_price">Unit Price</string>
     <string name="name">Nama</string>
+    <string name="email">Alamat Email</string>
+    <string name="phone">Telepon/WA</string>
+    <string name="address">Alamat</string>
     <string name="id">ID</string>
     <string name="cash">Tunai</string>
     <string name="change">Kembali</string>
     <string name="hint_search">Masukkan nama atau barcode</string>
+    <string name="hint_search_customer">Masukkan nama atau email</string>
     <string name="hint_cash">Masukkan uang tunai di sini</string>
     <string name="add_new_product">Tambah Produk Baru</string>
     <string name="add_stock">Tambah Stok</string>
     <string name="add_discount">Tambah Diskon</string>
+    <string name="add_new_customer">Tambah Pelanggan</string>
     <string name="previous">&lt;</string>
     <string name="next">></string>
     <string name="inventory">Persediaan</string>
     <string name="sale">Penjualan</string>
     <string name="report">Laporan</string>
+    <string name="customer">Pelanggan</string>
     <string name="language">Bahasa</string>
+    <string name="payment">Pembayaran</string>
 
     <string name="dialog_quit">Anda yakin ingin KELUAR?</string>
     <string name="dialog_remove_product">Anda yakin ingin MENGHAPUS produk ini?</string>

@@ -137,7 +137,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:background="@drawable/btn_green"
-            android:text="@string/confirm" />
+            android:text="@string/payment" />
     </LinearLayout>
 
 </LinearLayout>
