@@ -118,8 +118,8 @@ public class CustomerFragment extends UpdatableFragment {
                 int id = Integer.parseInt(customerList.get(position).get("id").toString());
 
                 //register.addItem(customerCatalog.getCustomerById(id), 1);
-                saleFragment.update();
-                viewPager.setCurrentItem(1);
+                //saleFragment.update();
+                viewPager.setCurrentItem(3);
             }
         });
 

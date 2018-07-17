@@ -48,6 +48,7 @@
     <string name="quit">Keluar</string>
     <string name="no">Tidak</string>
     <string name="product_detail">Rincian</string>
+    <string name="customer_detail">Rincian</string>
     <string name="stock">Stok</string>
     <string name="product_discount">Diskon</string>
     <string name="success">Berhasil</string>

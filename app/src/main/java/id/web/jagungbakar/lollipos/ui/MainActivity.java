@@ -30,11 +30,15 @@ import android.view.View;
 
 import id.web.jagungbakar.lollipos.R;
 import id.web.jagungbakar.lollipos.domain.LanguageController;
+import id.web.jagungbakar.lollipos.domain.customer.Customer;
+import id.web.jagungbakar.lollipos.domain.customer.CustomerCatalog;
+import id.web.jagungbakar.lollipos.domain.customer.CustomerService;
 import id.web.jagungbakar.lollipos.domain.inventory.Inventory;
 import id.web.jagungbakar.lollipos.domain.inventory.Product;
 import id.web.jagungbakar.lollipos.domain.inventory.ProductCatalog;
 import id.web.jagungbakar.lollipos.techicalservices.NoDaoSetException;
 import id.web.jagungbakar.lollipos.ui.component.UpdatableFragment;
+import id.web.jagungbakar.lollipos.ui.customer.CustomerDetailActivity;
 import id.web.jagungbakar.lollipos.ui.inventory.InventoryFragment;
 import id.web.jagungbakar.lollipos.ui.inventory.ProductDetailActivity;
 import id.web.jagungbakar.lollipos.ui.sale.ReportFragment;
@@ -53,8 +57,11 @@ public class MainActivity extends FragmentActivity {
 
 	private ViewPager viewPager;
 	private ProductCatalog productCatalog;
+	private CustomerCatalog customerCatalog;
 	private String productId;
 	private Product product;
+	private String customerId;
+	private Customer customer;
 	private static boolean SDK_SUPPORTED;
 	private PagerAdapter pagerAdapter;
 	private Resources res;
@@ -87,9 +94,9 @@ public class MainActivity extends FragmentActivity {
 					.setTabListener(tabListener), 0, false);
 			actionBar.addTab(actionBar.newTab().setText(res.getString(R.string.sale))
 					.setTabListener(tabListener), 1, true);
-			actionBar.addTab(actionBar.newTab().setText(res.getString(R.string.customer))
-					.setTabListener(tabListener), 2, false);
 			actionBar.addTab(actionBar.newTab().setText(res.getString(R.string.report))
+					.setTabListener(tabListener), 2, false);
+			actionBar.addTab(actionBar.newTab().setText(res.getString(R.string.customer))
 					.setTabListener(tabListener), 3, false);
 	
 			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
@@ -276,6 +283,43 @@ public class MainActivity extends FragmentActivity {
 		startActivity(intent);
 	}
 
+	public void optionOnClickHandlerCustomer(View view) {
+		viewPager.setCurrentItem(3);
+		String id = view.getTag().toString();
+		customerId = id;
+		try {
+			customerCatalog = CustomerService.getInstance().getCustomerCatalog();
+		} catch (NoDaoSetException e) {
+			e.printStackTrace();
+		}
+		customer = customerCatalog.getCustomerById(Integer.parseInt(customerId));
+		openDetailCustomerDialog();
+	}
+
+	private void openDetailCustomerDialog() {
+		AlertDialog.Builder quitDialog = new AlertDialog.Builder(MainActivity.this);
+		quitDialog.setTitle(customer.getName());
+		quitDialog.setPositiveButton(res.getString(R.string.remove), new OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				//openRemoveDialog();
+			}
+		});
+
+		quitDialog.setNegativeButton(res.getString(R.string.product_detail), new OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				Intent newActivity = new Intent(MainActivity.this,
+						CustomerDetailActivity.class);
+				newActivity.putExtra("id", customerId);
+				startActivity(newActivity);
+			}
+		});
+
+		quitDialog.show();
+	}
 }
 
 /**
@@ -304,11 +348,11 @@ class PagerAdapter extends FragmentStatePagerAdapter {
 		UpdatableFragment customerFragment = new CustomerFragment(saleFragment);
 
 		fragments = new UpdatableFragment[] { inventoryFragment, saleFragment,
-				customerFragment, reportFragment };
+				reportFragment, customerFragment };
 		fragmentNames = new String[] { res.getString(R.string.inventory),
 				res.getString(R.string.sale),
-				res.getString(R.string.customer),
-				res.getString(R.string.report)
+				res.getString(R.string.report),
+				res.getString(R.string.customer)
 		};
 
 	}

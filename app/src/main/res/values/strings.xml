@@ -48,6 +48,7 @@
     <string name="quit">Quit</string>
     <string name="no">No</string>
     <string name="product_detail">Detail</string>
+    <string name="customer_detail">Detail</string>
     <string name="stock">Stock</string>
     <string name="product_discount">Discount</string>
     <string name="success">Success</string>

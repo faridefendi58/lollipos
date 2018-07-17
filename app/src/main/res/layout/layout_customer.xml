@@ -17,7 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:ems="10"
-            android:hint="@string/hint_search_customer" />
+            android:hint="@string/hint_search_customer"
+            android:drawableLeft="@drawable/ic_search_black_24dp"/>
     </LinearLayout>
 
     <ListView

@@ -28,6 +28,7 @@ import id.web.jagungbakar.lollipos.domain.DateTimeStrategy;
 import id.web.jagungbakar.lollipos.domain.sale.Sale;
 import id.web.jagungbakar.lollipos.domain.sale.SaleLedger;
 import id.web.jagungbakar.lollipos.techicalservices.NoDaoSetException;
+import id.web.jagungbakar.lollipos.ui.MainActivity;
 import id.web.jagungbakar.lollipos.ui.component.UpdatableFragment;
 
 /**
@@ -152,7 +153,7 @@ public class ReportFragment extends UpdatableFragment {
 		for (Sale sale : list) {
 			saleList.add(sale.toMap());
 		}
-		
+
 		SimpleAdapter sAdap = new SimpleAdapter(getActivity().getBaseContext() , saleList,
 				R.layout.listview_report, new String[] { "id", "startTime", "total"},
 				new int[] { R.id.sid, R.id.startTime , R.id.total});
@@ -161,7 +162,11 @@ public class ReportFragment extends UpdatableFragment {
 
 	@Override
 	public void update() {
-		int period = spinner.getSelectedItemPosition();
+		int period = DAILY;
+		if (spinner != null) {
+			period = spinner.getSelectedItemPosition();
+		}
+
 		List<Sale> list = null;
 		Calendar cTime = (Calendar) currentTime.clone();
 		Calendar eTime = (Calendar) currentTime.clone();

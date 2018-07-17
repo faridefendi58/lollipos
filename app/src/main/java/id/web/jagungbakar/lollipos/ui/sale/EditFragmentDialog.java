@@ -110,7 +110,12 @@ public class EditFragmentDialog extends DialogFragment {
 	 */
 	private void end(){
 		saleFragment.update();
-		reportFragment.update();
+		try {
+			reportFragment.update();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		this.dismiss();
 	}
 	

@@ -71,7 +71,12 @@ public class EndPaymentFragmentDialog extends DialogFragment  {
 	private void end(){
 		regis.endSale(DateTimeStrategy.getCurrentTime());
 		saleFragment.update();
-		reportFragment.update();
+		try {
+			reportFragment.update();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		this.dismiss();
 	}
 
