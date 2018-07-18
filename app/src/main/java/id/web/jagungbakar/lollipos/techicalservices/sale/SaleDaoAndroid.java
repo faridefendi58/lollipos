@@ -193,4 +193,33 @@ public class SaleDaoAndroid implements SaleDao {
 		content.put("customer_id", customer.getId());
 		database.update(DatabaseContents.TABLE_SALE.toString(), content);
 	}
+
+	@Override
+	public Customer getCustomerBySaleId(int id) {
+		String queryString = "SELECT t._id, t.customer_id, c.name, c.email, c.phone, c.address, c.status " +
+				"FROM " + DatabaseContents.TABLE_SALE + " t " +
+				"LEFT JOIN " + DatabaseContents.TABLE_CUSTOMER + " c ON c._id = t.customer_id " +
+				"WHERE t._id = " + id;
+
+		List<Object> objectList = database.select(queryString);
+		List<Customer> list = new ArrayList<Customer>();
+		for (Object object: objectList) {
+			ContentValues content = (ContentValues) object;
+			//content.getAsInteger("customer_id")
+			if (content.getAsString("name").length() > 0) {
+				list.add(new Customer(
+						content.getAsString("name"),
+						content.getAsString("email"),
+						content.getAsString("phone"),
+						content.getAsString("address"),
+						content.getAsInteger("status")
+				));
+			} else {
+				list.add(new Customer(
+						"a", "b", "c", "d", 1
+				));
+			}
+		}
+		return list.get(0);
+	}
 }

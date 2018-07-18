@@ -3,6 +3,7 @@ package id.web.jagungbakar.lollipos.domain.sale;
 import java.util.Calendar;
 import java.util.List;
 
+import id.web.jagungbakar.lollipos.domain.customer.Customer;
 import id.web.jagungbakar.lollipos.techicalservices.NoDaoSetException;
 import id.web.jagungbakar.lollipos.techicalservices.sale.SaleDao;
 
@@ -76,5 +77,9 @@ public class SaleLedger {
 	 */
 	public List<Sale> getAllSaleDuring(Calendar start, Calendar end) {
 		return saleDao.getAllSaleDuring(start, end);
+	}
+
+	public Customer getCustomerBySaleId(int id) {
+		return saleDao.getCustomerBySaleId(id);
 	}
 }

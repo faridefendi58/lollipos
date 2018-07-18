@@ -91,4 +91,6 @@ public interface SaleDao {
 	void removeLineItem(int id);
 
 	void setCustomerSale(Sale sale, Customer customer);
+
+	Customer getCustomerBySaleId(int id);
 }
