@@ -76,7 +76,7 @@ public interface SaleDao {
 	 * @return list of Sale with scope of time.
 	 */
 	List<Sale> getAllSaleDuring(Calendar start, Calendar end);
-	
+
 	/**
 	 * Cancel the Sale.
 	 * @param sale Sale to be cancel.
@@ -93,4 +93,8 @@ public interface SaleDao {
 	void setCustomerSale(Sale sale, Customer customer);
 
 	Customer getCustomerBySaleId(int id);
+
+	void removeCustomerSale(Sale sale);
+
+	List<Sale> getAllSaleByCustomerId(int id);
 }

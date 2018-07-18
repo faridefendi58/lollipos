@@ -27,6 +27,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import id.web.jagungbakar.lollipos.R;
 import id.web.jagungbakar.lollipos.domain.LanguageController;
@@ -36,6 +37,7 @@ import id.web.jagungbakar.lollipos.domain.customer.CustomerService;
 import id.web.jagungbakar.lollipos.domain.inventory.Inventory;
 import id.web.jagungbakar.lollipos.domain.inventory.Product;
 import id.web.jagungbakar.lollipos.domain.inventory.ProductCatalog;
+import id.web.jagungbakar.lollipos.domain.sale.Register;
 import id.web.jagungbakar.lollipos.techicalservices.NoDaoSetException;
 import id.web.jagungbakar.lollipos.ui.component.UpdatableFragment;
 import id.web.jagungbakar.lollipos.ui.customer.CustomerDetailActivity;
@@ -65,6 +67,10 @@ public class MainActivity extends FragmentActivity {
 	private static boolean SDK_SUPPORTED;
 	private PagerAdapter pagerAdapter;
 	private Resources res;
+
+	private TextView customer_name_box;
+	private TextView customer_id_box;
+	private Register register;
 
 	@SuppressLint("NewApi")
 	/**
@@ -315,6 +321,53 @@ public class MainActivity extends FragmentActivity {
 						CustomerDetailActivity.class);
 				newActivity.putExtra("id", customerId);
 				startActivity(newActivity);
+			}
+		});
+
+		quitDialog.show();
+	}
+
+	public void customerOnClickHandler(View view) {
+		viewPager.setCurrentItem(1);
+		customer_name_box = (TextView) viewPager.findViewById(R.id.customer_name_box);
+		customer_id_box = (TextView) viewPager.findViewById(R.id.customer_id_box);
+		String id = customer_id_box.getText().toString();
+
+		customerId = id;
+		try {
+			customerCatalog = CustomerService.getInstance().getCustomerCatalog();
+			register = Register.getInstance();
+		} catch (NoDaoSetException e) {
+			e.printStackTrace();
+		}
+		customer = customerCatalog.getCustomerById(Integer.parseInt(customerId));
+		openRemoveCustomerDialog();
+	}
+
+	private void openRemoveCustomerDialog() {
+		AlertDialog.Builder quitDialog = new AlertDialog.Builder(MainActivity.this);
+		quitDialog.setTitle(customer.getName());
+		quitDialog.setPositiveButton(res.getString(R.string.remove), new OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				try {
+					register.removeCustomer();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+				customer_id_box.setText("0");
+				customer_name_box.setText(null);
+				customer_name_box.setVisibility(View.GONE);
+			}
+		});
+
+		quitDialog.setNegativeButton(res.getString(R.string.update), new OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				viewPager.setCurrentItem(3);
 			}
 		});
 

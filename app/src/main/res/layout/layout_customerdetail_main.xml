@@ -28,6 +28,10 @@
                 <include
                     android:id="@+id/tab1"
                     layout="@layout/layout_customerdetail_detail" />
+
+                <include
+                    android:id="@+id/tab2"
+                    layout="@layout/layout_customerdetail_order" />
             </FrameLayout>
         </LinearLayout>
     </TabHost>

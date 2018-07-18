@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import android.content.ContentValues;
+import android.util.Log;
 
 import id.web.jagungbakar.lollipos.domain.DateTimeStrategy;
 import id.web.jagungbakar.lollipos.domain.customer.Customer;
@@ -203,23 +204,39 @@ public class SaleDaoAndroid implements SaleDao {
 
 		List<Object> objectList = database.select(queryString);
 		List<Customer> list = new ArrayList<Customer>();
-		for (Object object: objectList) {
-			ContentValues content = (ContentValues) object;
-			//content.getAsInteger("customer_id")
-			if (content.getAsString("name").length() > 0) {
-				list.add(new Customer(
-						content.getAsString("name"),
-						content.getAsString("email"),
-						content.getAsString("phone"),
-						content.getAsString("address"),
-						content.getAsInteger("status")
-				));
-			} else {
-				list.add(new Customer(
-						"a", "b", "c", "d", 1
-				));
+		if (objectList.size() > 0) {
+			for (Object object: objectList) {
+				ContentValues content = (ContentValues) object;
+				Log.e("SaleDAO", "content : "+ content.toString());
+				if (content != null) {
+					list.add(new Customer(
+							(content.get("name") != null)? content.getAsString("name") : "-",
+							(content.get("email") != null)? content.getAsString("email") : "-",
+							(content.get("phone") != null)? content.getAsString("phone") : "-",
+							(content.get("address") != null)? content.getAsString("address") : "-",
+							(content.get("status") != null)? content.getAsInteger("status") : 0
+					));
+				} else {
+					list.add(new Customer(
+							"-", "-", "-", "-", 0
+					));
+				}
 			}
 		}
+
 		return list.get(0);
+	}
+
+	@Override
+	public void removeCustomerSale(Sale sale) {
+		ContentValues content = new ContentValues();
+		content.put("_id", sale.getId());
+		content.put("customer_id", 0);
+		database.update(DatabaseContents.TABLE_SALE.toString(), content);
+	}
+
+	@Override
+	public List<Sale> getAllSaleByCustomerId(int id) {
+		return getAllSale(" WHERE status = 'ENDED' AND customer_id = "+ id);
 	}
 }

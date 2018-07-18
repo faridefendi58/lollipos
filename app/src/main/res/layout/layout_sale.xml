@@ -130,7 +130,16 @@
             android:textSize="8pt"
             android:text=""
             android:drawableLeft="@drawable/ic_person_pin_black_24dp"
+            android:onClick="customerOnClickHandler"
+            android:clickable="true"
             android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/customer_id_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:visibility="gone" />
 
     </LinearLayout>
 

@@ -82,4 +82,8 @@ public class SaleLedger {
 	public Customer getCustomerBySaleId(int id) {
 		return saleDao.getCustomerBySaleId(id);
 	}
+
+	public List<Sale> getAllSaleByCustomerId(int customer_id) {
+		return saleDao.getAllSaleByCustomerId(customer_id);
+	}
 }

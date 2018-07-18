@@ -193,4 +193,10 @@ public class Register {
 
 		return customer;
 	}
+
+	public void removeCustomer() {
+		if (currentSale != null) {
+			saleDao.removeCustomerSale(currentSale);
+		}
+	}
 }

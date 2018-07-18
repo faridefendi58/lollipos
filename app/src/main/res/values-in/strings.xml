@@ -40,6 +40,7 @@
     <string name="customer">Pelanggan</string>
     <string name="language">Bahasa</string>
     <string name="payment">Pembayaran</string>
+    <string name="update">Ubah</string>
 
     <string name="dialog_quit">Anda yakin ingin KELUAR?</string>
     <string name="dialog_remove_product">Anda yakin ingin MENGHAPUS produk ini?</string>
@@ -55,6 +56,7 @@
     <string name="fail">Gagal</string>
     <string name="please_input_all">Silakan lengkapi semua data.</string>
     <string name="need_money">Diperlukan</string>
+    <string name="customer_order">Daftar Transaksi</string>
 
     <string name="title_home">Beranda</string>
     <string name="title_dashboard">Dasbor</string>

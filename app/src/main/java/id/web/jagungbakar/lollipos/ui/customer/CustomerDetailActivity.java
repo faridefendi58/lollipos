@@ -16,12 +16,22 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TabHost;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import id.web.jagungbakar.lollipos.R;
+import id.web.jagungbakar.lollipos.domain.CurrencyController;
 import id.web.jagungbakar.lollipos.domain.customer.Customer;
 import id.web.jagungbakar.lollipos.domain.customer.CustomerCatalog;
 import id.web.jagungbakar.lollipos.domain.customer.CustomerService;
+import id.web.jagungbakar.lollipos.domain.sale.Sale;
+import id.web.jagungbakar.lollipos.domain.sale.SaleLedger;
 import id.web.jagungbakar.lollipos.techicalservices.NoDaoSetException;
 
 /**
@@ -52,6 +62,11 @@ public class CustomerDetailActivity extends Activity {
     private View Viewlayout;
     private AlertDialog alert;
 
+    private SaleLedger saleLedger;
+    List<Map<String, String>> saleList;
+    private ListView saleLedgerListView;
+    private TextView totalBox;
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -71,12 +86,14 @@ public class CustomerDetailActivity extends Activity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
         res = getResources();
         initiateActionBar();
 
         try {
             customerCatalog = CustomerService.getInstance().getCustomerCatalog();
+            saleLedger = SaleLedger.getInstance();
         } catch (NoDaoSetException e) {
             e.printStackTrace();
         }
@@ -98,13 +115,14 @@ public class CustomerDetailActivity extends Activity {
      * @param savedInstanceState
      */
     private void initUI(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_customerdetail_main);
 
         nameBox = (EditText) findViewById(R.id.nameBox);
         emailBox = (EditText) findViewById(R.id.emailBox);
         phoneBox = (EditText) findViewById(R.id.phoneBox);
         addressBox = (EditText) findViewById(R.id.addressBox);
+        saleLedgerListView = (ListView) findViewById(R.id.orderListView);
+        totalBox = (TextView) findViewById(R.id.totalBox);
 
         submitEditButton = (Button) findViewById(R.id.submitEditButton);
         submitEditButton.setVisibility(View.INVISIBLE);
@@ -117,10 +135,21 @@ public class CustomerDetailActivity extends Activity {
         mTabHost.setup();
         mTabHost.addTab(mTabHost.newTabSpec("tab_test1").setIndicator(res.getString(R.string.customer_detail))
                 .setContent(R.id.tab1));
+        mTabHost.addTab(mTabHost.newTabSpec("tab_test1").setIndicator(res.getString(R.string.customer_order))
+                .setContent(R.id.tab2));
 
         mTabHost.setCurrentTab(0);
         popDialog = new AlertDialog.Builder(this);
         inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
+
+        List<Sale> list = null;
+        list = saleLedger.getAllSaleByCustomerId(customer.getId());
+        double total = 0;
+        for (Sale sale : list)
+            total += sale.getTotal();
+
+        totalBox.setText(CurrencyController.getInstance().moneyFormat(total) + "");
+        showList(list);
 
         openEditButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -202,6 +231,10 @@ public class CustomerDetailActivity extends Activity {
         phoneBox.setFocusable(false);
         phoneBox.setFocusableInTouchMode(false);
         phoneBox.setBackgroundColor(Color.parseColor("#87CEEB"));
+        addressBox.setFocusable(false);
+        addressBox.setFocusableInTouchMode(false);
+        addressBox.setBackgroundColor(Color.parseColor("#87CEEB"));
+
         submitEditButton.setVisibility(View.INVISIBLE);
         cancelEditButton.setVisibility(View.INVISIBLE);
         nameBox.setText(remember[0]);
@@ -237,5 +270,19 @@ public class CustomerDetailActivity extends Activity {
         submitEditButton.setVisibility(View.VISIBLE);
         cancelEditButton.setVisibility(View.VISIBLE);
         openEditButton.setVisibility(View.INVISIBLE);
+    }
+
+    private void showList(List<Sale> list) {
+
+        saleList = new ArrayList<Map<String, String>>();
+        for (Sale sale : list) {
+            saleList.add(sale.toMap());
+        }
+
+        SimpleAdapter sAdap = new SimpleAdapter(this.getBaseContext() , saleList,
+                R.layout.listview_report, new String[] { "id", "startTime", "total"},
+                new int[] { R.id.sid, R.id.startTime , R.id.total});
+
+        saleLedgerListView.setAdapter(sAdap);
     }
 }

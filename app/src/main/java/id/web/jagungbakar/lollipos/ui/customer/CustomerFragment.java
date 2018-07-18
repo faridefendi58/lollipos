@@ -128,6 +128,9 @@ public class CustomerFragment extends UpdatableFragment {
                     TextView customer_name_box = (TextView) viewPager.findViewById(R.id.customer_name_box);
                     customer_name_box.setText(register.getCustomer().getName());
                     customer_name_box.setVisibility(View.VISIBLE);
+
+                    TextView customer_id_box = (TextView) viewPager.findViewById(R.id.customer_id_box);
+                    customer_id_box.setText(""+ id);
                 }
             }
         });
