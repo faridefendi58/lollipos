@@ -24,7 +24,7 @@ public class Sale {
 	private String endTime;
 	private String status;
 	private List<LineItem> items;
-	
+	private Integer customer_id;
 
 	public Sale(int id, String startTime) {
 		this(id, startTime, startTime, "", new ArrayList<LineItem>());
@@ -153,4 +153,7 @@ public class Sale {
 		items.remove(lineItem);
 	}
 
+	public int getCustomerId() {
+		return customer_id;
+	}
 }

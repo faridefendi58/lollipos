@@ -3,6 +3,7 @@ package id.web.jagungbakar.lollipos.techicalservices.sale;
 import java.util.Calendar;
 import java.util.List;
 
+import id.web.jagungbakar.lollipos.domain.customer.Customer;
 import id.web.jagungbakar.lollipos.domain.inventory.LineItem;
 import id.web.jagungbakar.lollipos.domain.sale.Sale;
 
@@ -89,5 +90,5 @@ public interface SaleDao {
 	 */
 	void removeLineItem(int id);
 
-
+	void setCustomerSale(Sale sale, Customer customer);
 }

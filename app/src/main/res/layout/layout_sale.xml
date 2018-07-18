@@ -119,6 +119,24 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10sp">
+
+        <TextView
+            android:id="@+id/customer_name_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:textSize="8pt"
+            android:text=""
+            android:drawableLeft="@drawable/ic_person_pin_black_24dp"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal" >
 
         <Button
@@ -128,6 +146,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:background="@drawable/btn_red"
+            android:drawableLeft="@drawable/ic_cached_white_24dp"
             android:text="@string/clear" />
 
         <Button
@@ -137,7 +156,8 @@
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:background="@drawable/btn_green"
-            android:text="@string/payment" />
+            android:text="@string/payment"
+            android:drawableLeft="@drawable/ic_money_white_24dp"/>
     </LinearLayout>
 
 </LinearLayout>

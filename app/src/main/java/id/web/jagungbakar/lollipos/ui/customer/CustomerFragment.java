@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -117,9 +119,16 @@ public class CustomerFragment extends UpdatableFragment {
             public void onItemClick(AdapterView<?> myAdapter, View myView, int position, long mylng) {
                 int id = Integer.parseInt(customerList.get(position).get("id").toString());
 
-                //register.addItem(customerCatalog.getCustomerById(id), 1);
+                //Log.e("Customer Fragment", "Customer ID : "+ customerCatalog.getCustomerById(id).toString());
+                register.setCustomer(customerCatalog.getCustomerById(id));
                 //saleFragment.update();
-                viewPager.setCurrentItem(3);
+                viewPager.setCurrentItem(1);
+                if (register.getCustomer() instanceof Customer) {
+                    //Log.e("Customer Fragment", "Customer name : "+ register.getCustomer().getName());
+                    TextView customer_name_box = (TextView) viewPager.findViewById(R.id.customer_name_box);
+                    customer_name_box.setText(register.getCustomer().getName());
+                    customer_name_box.setVisibility(View.VISIBLE);
+                }
             }
         });
 

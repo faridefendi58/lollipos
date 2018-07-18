@@ -76,7 +76,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="2dip"
-            android:text="@string/phone"
+            android:text="@string/address"
             android:textSize="16sp" />
 
         <EditText

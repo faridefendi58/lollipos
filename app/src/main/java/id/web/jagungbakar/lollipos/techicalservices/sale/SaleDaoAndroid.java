@@ -7,6 +7,7 @@ import java.util.List;
 import android.content.ContentValues;
 
 import id.web.jagungbakar.lollipos.domain.DateTimeStrategy;
+import id.web.jagungbakar.lollipos.domain.customer.Customer;
 import id.web.jagungbakar.lollipos.domain.inventory.LineItem;
 import id.web.jagungbakar.lollipos.domain.inventory.Product;
 import id.web.jagungbakar.lollipos.domain.sale.QuickLoadSale;
@@ -107,7 +108,8 @@ public class SaleDaoAndroid implements SaleDao {
         			content.getAsString("end_time"),
         			content.getAsString("status"),
         			content.getAsDouble("total"),
-        			content.getAsInteger("orders")      
+        			content.getAsInteger("orders"),
+        			content.getAsInteger("customer_id")
         			)
         	);
         }
@@ -172,6 +174,7 @@ public class SaleDaoAndroid implements SaleDao {
         content.put("payment", "n/a");
         content.put("total", sale.getTotal());
         content.put("orders", sale.getOrders());
+		content.put("customer_id", 0);
         content.put("start_time", sale.getStartTime());
         content.put("end_time", endTime);
 		database.update(DatabaseContents.TABLE_SALE.toString(), content);
@@ -183,6 +186,11 @@ public class SaleDaoAndroid implements SaleDao {
 		database.delete(DatabaseContents.TABLE_SALE_LINEITEM.toString(), id);
 	}
 
-
-
+	@Override
+	public void setCustomerSale(Sale sale, Customer customer) {
+		ContentValues content = new ContentValues();
+		content.put("_id", sale.getId());
+		content.put("customer_id", customer.getId());
+		database.update(DatabaseContents.TABLE_SALE.toString(), content);
+	}
 }
