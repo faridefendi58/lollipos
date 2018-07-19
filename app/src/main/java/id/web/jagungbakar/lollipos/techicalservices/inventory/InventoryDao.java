@@ -8,8 +8,7 @@ import id.web.jagungbakar.lollipos.domain.inventory.ProductLot;
 
 /**
  * DAO for Inventory.
- * 
- * @author Refresh Team
+ *
  *
  */
 public interface InventoryDao {

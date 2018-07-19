@@ -2,8 +2,7 @@ package id.web.jagungbakar.lollipos.techicalservices;
 
 /**
  * Uses to directly access to database.
- * 
- * @author Refresh Team
+ *
  *
  */
 public class DatabaseExecutor {

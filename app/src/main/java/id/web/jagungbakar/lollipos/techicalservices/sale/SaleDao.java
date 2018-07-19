@@ -9,8 +9,7 @@ import id.web.jagungbakar.lollipos.domain.sale.Sale;
 
 /**
  * DAO for Sale process.
- * 
- * @author Refresh Team
+ *
  *
  */
 public interface SaleDao {

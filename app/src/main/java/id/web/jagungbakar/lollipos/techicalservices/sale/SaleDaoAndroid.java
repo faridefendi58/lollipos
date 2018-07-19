@@ -19,8 +19,7 @@ import id.web.jagungbakar.lollipos.techicalservices.DatabaseContents;
 
 /**
  * DAO used by android for Sale process.
- * 
- * @author Refresh Team
+ *
  *
  */
 public class SaleDaoAndroid implements SaleDao {

@@ -17,8 +17,7 @@ import id.web.jagungbakar.lollipos.techicalservices.sale.SaleDao;
 
 /**
  * Handles all Sale processes.
- * 
- * @author Refresh Team
+ *
  *
  */
 public class Register {

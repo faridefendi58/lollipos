@@ -40,8 +40,7 @@ import id.web.jagungbakar.lollipos.ui.component.UpdatableFragment;
 /**
  * UI for Inventory, shows list of Product in the ProductCatalog.
  * Also use for a sale process of adding Product into sale.
- * 
- * @author Refresh Team
+ *
  *
  */
 @SuppressLint("ValidFragment")

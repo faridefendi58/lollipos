@@ -6,8 +6,7 @@ import id.web.jagungbakar.lollipos.techicalservices.NoDaoSetException;
 
 /**
  * Product or item represents the real product in store.
- * 
- * @author Refresh Team
+ *
  *
  */
 public class Product {

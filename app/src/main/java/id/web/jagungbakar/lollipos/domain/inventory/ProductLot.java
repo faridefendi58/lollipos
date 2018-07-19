@@ -7,8 +7,7 @@ import id.web.jagungbakar.lollipos.domain.DateTimeStrategy;
 
 /**
  * Lot or bunch of product that import to inventory.
- * 
- * @author Refresh Team
+ *
  * 
  */
 public class ProductLot {

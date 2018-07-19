@@ -13,8 +13,7 @@ import android.util.Log;
 /**
  * Real database connector, provides all CRUD operation.
  * database tables are created here.
- * 
- * @author Refresh Team
+ *
  *
  */
 public class AndroidDatabase extends SQLiteOpenHelper implements Database {

@@ -33,7 +33,6 @@ import id.web.jagungbakar.lollipos.ui.component.UpdatableFragment;
 
 /**
  * UI for showing sale's record.
- * @author Refresh Team
  *
  */
 public class ReportFragment extends UpdatableFragment {

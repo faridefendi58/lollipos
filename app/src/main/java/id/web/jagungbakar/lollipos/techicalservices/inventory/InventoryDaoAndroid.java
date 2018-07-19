@@ -15,8 +15,7 @@ import id.web.jagungbakar.lollipos.ui.inventory.ProductDetailActivity;
 
 /**
  * DAO used by android for Inventory.
- * 
- * @author Refresh Team
+ *
  *
  */
 public class InventoryDaoAndroid implements InventoryDao {

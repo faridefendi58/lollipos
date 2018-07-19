@@ -5,8 +5,7 @@ package id.web.jagungbakar.lollipos.domain.sale;
  * It's for overview report that doesn't need LineItem's information.
  * NOTE: This Sale instance throws NullPointerException
  * when calling method that involve with LineItem.
- * 
- * @author Refresh Team
+ *
  *
  */
 public class QuickLoadSale extends Sale {

@@ -9,8 +9,7 @@ import id.web.jagungbakar.lollipos.techicalservices.DatabaseContents;
 
 /**
  * Saves and loads language preference from database.
- * 
- * @author Refresh Team
+ *
  *
  */
 public class LanguageController {

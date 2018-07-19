@@ -13,8 +13,7 @@ import id.web.jagungbakar.lollipos.domain.inventory.Product;
 
 /**
  * Sale represents sale operation.
- * 
- * @author Refresh Team
+ *
  *
  */
 public class Sale {

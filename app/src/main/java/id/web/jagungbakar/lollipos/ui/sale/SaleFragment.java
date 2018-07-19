@@ -38,7 +38,6 @@ import id.web.jagungbakar.lollipos.ui.component.UpdatableFragment;
 
 /**
  * UI for Sale operation.
- * @author Refresh Team
  *
  */
 @SuppressLint("ValidFragment")

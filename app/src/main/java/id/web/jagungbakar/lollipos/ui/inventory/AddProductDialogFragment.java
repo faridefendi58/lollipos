@@ -23,8 +23,7 @@ import id.web.jagungbakar.lollipos.ui.component.UpdatableFragment;
 
 /**
  * A dialog of adding a Product.
- * 
- * @author Refresh Team
+ *
  *
  */
 @SuppressLint("ValidFragment")

@@ -13,8 +13,7 @@ import id.web.jagungbakar.lollipos.domain.inventory.ProductCatalog;
 
 /**
  * Reads a demo products from CSV in res/raw/
- * 
- * @author Refresh Team
+ *
  *
  */
 public class Demo {

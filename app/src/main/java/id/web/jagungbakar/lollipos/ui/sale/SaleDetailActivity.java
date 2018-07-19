@@ -27,7 +27,6 @@ import id.web.jagungbakar.lollipos.techicalservices.NoDaoSetException;
 
 /**
  * UI for showing the detail of Sale in the record.
- * @author Refresh Team
  *
  */
 public class SaleDetailActivity extends Activity{

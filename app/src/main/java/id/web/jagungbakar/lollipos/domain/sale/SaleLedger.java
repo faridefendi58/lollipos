@@ -9,8 +9,7 @@ import id.web.jagungbakar.lollipos.techicalservices.sale.SaleDao;
 
 /**
  * Book that keeps sale record.
- * 
- * @author Refresh Team
+ *
  *
  */
 public class SaleLedger {

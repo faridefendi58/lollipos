@@ -17,7 +17,6 @@ import id.web.jagungbakar.lollipos.ui.component.UpdatableFragment;
 
 /**
  * A dialog shows the total change and confirmation for Sale.
- * @author Refresh Team
  *
  */
 @SuppressLint("ValidFragment")

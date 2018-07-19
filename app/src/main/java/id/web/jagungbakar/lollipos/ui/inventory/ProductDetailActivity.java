@@ -45,7 +45,6 @@ import id.web.jagungbakar.lollipos.ui.sale.SaleFragment;
 
 /**
  * UI for shows the datails of each Product.
- * @author Refresh Team
  *
  */
 @SuppressLint("NewApi")
