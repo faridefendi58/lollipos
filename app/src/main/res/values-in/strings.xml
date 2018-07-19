@@ -44,6 +44,7 @@
 
     <string name="dialog_quit">Anda yakin ingin KELUAR?</string>
     <string name="dialog_remove_product">Anda yakin ingin MENGHAPUS produk ini?</string>
+    <string name="dialog_remove_customer">Anda yakin ingin MENGHAPUS pelanggan ini?</string>
     <string name="dialog_clear_sale">Anda yakin ingin MEMBERSIHKAN penjualan ini?</string>
     <string name="hint_empty_sale">Data penjualan kosong.</string>
     <string name="quit">Keluar</string>
