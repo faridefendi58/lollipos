@@ -4,8 +4,7 @@ import java.util.List;
 
 /**
  * Interface of CRUD operation.
- * 
- * @author Refresh Team
+ *
  *
  */
 public interface Database {

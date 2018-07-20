@@ -20,7 +20,7 @@
         android:id="@+id/optionView"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:background="@drawable/edit"
+        android:background="@drawable/ic_visibility_black_24dp"
         android:onClick="optionOnClickHandler" />
 
 </LinearLayout>

@@ -19,12 +19,15 @@ import id.web.jagungbakar.lollipos.R;
 import id.web.jagungbakar.lollipos.domain.CurrencyController;
 import id.web.jagungbakar.lollipos.domain.DateTimeStrategy;
 import id.web.jagungbakar.lollipos.domain.LanguageController;
+import id.web.jagungbakar.lollipos.domain.customer.CustomerService;
 import id.web.jagungbakar.lollipos.domain.inventory.Inventory;
 import id.web.jagungbakar.lollipos.domain.sale.Register;
 import id.web.jagungbakar.lollipos.domain.sale.SaleLedger;
 import id.web.jagungbakar.lollipos.techicalservices.AndroidDatabase;
 import id.web.jagungbakar.lollipos.techicalservices.Database;
 import id.web.jagungbakar.lollipos.techicalservices.DatabaseExecutor;
+import id.web.jagungbakar.lollipos.techicalservices.customer.CustomerDao;
+import id.web.jagungbakar.lollipos.techicalservices.customer.CustomerDaoAndroid;
 import id.web.jagungbakar.lollipos.techicalservices.inventory.InventoryDao;
 import id.web.jagungbakar.lollipos.techicalservices.inventory.InventoryDaoAndroid;
 import id.web.jagungbakar.lollipos.techicalservices.sale.SaleDao;
@@ -33,8 +36,7 @@ import id.web.jagungbakar.lollipos.techicalservices.sale.SaleDaoAndroid;
 /**
  * This is the first activity page, core-app and database created here.
  * Dependency injection happens here.
- * 
- * @author Refresh Team
+ *
  * 
  */
 public class SplashScreenActivity extends Activity {
@@ -51,6 +53,7 @@ public class SplashScreenActivity extends Activity {
 		Database database = new AndroidDatabase(this);
 		InventoryDao inventoryDao = new InventoryDaoAndroid(database);
 		SaleDao saleDao = new SaleDaoAndroid(database);
+		CustomerDao customerDao = new CustomerDaoAndroid(database);
 		DatabaseExecutor.setDatabase(database);
 		LanguageController.setDatabase(database);
 		CurrencyController.setDatabase(database);
@@ -58,7 +61,8 @@ public class SplashScreenActivity extends Activity {
 		Inventory.setInventoryDao(inventoryDao);
 		Register.setSaleDao(saleDao);
 		SaleLedger.setSaleDao(saleDao);
-		
+		CustomerService.setCustomerDao(customerDao);
+
 		DateTimeStrategy.setLocale("id", "ID");
 		setLanguage(LanguageController.getInstance().getLanguage());
 		CurrencyController.setCurrency("idr");

@@ -38,7 +38,6 @@ import id.web.jagungbakar.lollipos.ui.component.UpdatableFragment;
 
 /**
  * UI for Sale operation.
- * @author Refresh Team
  *
  */
 @SuppressLint("ValidFragment")
@@ -52,6 +51,7 @@ public class SaleFragment extends UpdatableFragment {
 	private Button endButton;
 	private UpdatableFragment reportFragment;
 	private Resources res;
+	private TextView customer_name_box;
 
 	/**
 	 * Construct a new SaleFragment.
@@ -78,6 +78,7 @@ public class SaleFragment extends UpdatableFragment {
 		totalPrice = (TextView) view.findViewById(R.id.totalPrice);
 		clearButton = (Button) view.findViewById(R.id.clearButton);
 		endButton = (Button) view.findViewById(R.id.endButton);
+		customer_name_box = (TextView) view.findViewById(R.id.customer_name_box);
 		
 		initUI();
 		return view;
@@ -198,6 +199,7 @@ public class SaleFragment extends UpdatableFragment {
 		else{
 			showList(new ArrayList<LineItem>());
 			totalPrice.setText("0.00");
+			customer_name_box.setVisibility(View.GONE);
 		}
 	}
 	

@@ -3,13 +3,13 @@ package id.web.jagungbakar.lollipos.techicalservices.sale;
 import java.util.Calendar;
 import java.util.List;
 
+import id.web.jagungbakar.lollipos.domain.customer.Customer;
 import id.web.jagungbakar.lollipos.domain.inventory.LineItem;
 import id.web.jagungbakar.lollipos.domain.sale.Sale;
 
 /**
  * DAO for Sale process.
- * 
- * @author Refresh Team
+ *
  *
  */
 public interface SaleDao {
@@ -75,7 +75,7 @@ public interface SaleDao {
 	 * @return list of Sale with scope of time.
 	 */
 	List<Sale> getAllSaleDuring(Calendar start, Calendar end);
-	
+
 	/**
 	 * Cancel the Sale.
 	 * @param sale Sale to be cancel.
@@ -89,5 +89,11 @@ public interface SaleDao {
 	 */
 	void removeLineItem(int id);
 
+	void setCustomerSale(Sale sale, Customer customer);
 
+	Customer getCustomerBySaleId(int id);
+
+	void removeCustomerSale(Sale sale);
+
+	List<Sale> getAllSaleByCustomerId(int id);
 }

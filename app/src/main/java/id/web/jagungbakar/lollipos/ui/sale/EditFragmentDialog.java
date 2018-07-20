@@ -20,7 +20,6 @@ import id.web.jagungbakar.lollipos.ui.component.UpdatableFragment;
 /**
  * A dialog for edit a LineItem of sale,
  * overriding price or set the quantity.
- * @author Refresh Team
  *
  */
 @SuppressLint("ValidFragment")
@@ -110,7 +109,12 @@ public class EditFragmentDialog extends DialogFragment {
 	 */
 	private void end(){
 		saleFragment.update();
-		reportFragment.update();
+		try {
+			reportFragment.update();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		this.dismiss();
 	}
 	

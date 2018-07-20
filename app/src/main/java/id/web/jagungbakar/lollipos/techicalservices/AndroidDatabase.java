@@ -13,8 +13,7 @@ import android.util.Log;
 /**
  * Real database connector, provides all CRUD operation.
  * database tables are created here.
- * 
- * @author Refresh Team
+ *
  *
  */
 public class AndroidDatabase extends SQLiteOpenHelper implements Database {
@@ -74,6 +73,7 @@ public class AndroidDatabase extends SQLiteOpenHelper implements Database {
 				+ "total DOUBLE,"
 				+ "start_time DATETIME,"
 				+ "end_time DATETIME,"
+				+ "customer_id INTEGER,"
 				+ "orders INTEGER"
 				
 				+ ");");
@@ -115,6 +115,19 @@ public class AndroidDatabase extends SQLiteOpenHelper implements Database {
 
 				+ ");");
 		Log.d("CREATE DATABASE", "Create " + DatabaseContents.CURRENCY + " Successfully.");
+
+		database.execSQL("CREATE TABLE " + DatabaseContents.TABLE_CUSTOMER + "("
+
+				+ "_id INTEGER PRIMARY KEY,"
+				+ "name TEXT(100),"
+				+ "email TEXT(100),"
+				+ "phone TEXT(20),"
+				+ "address TEXT(256),"
+				+ "status INTEGER,"
+				+ "date_added DATETIME"
+
+				+ ");");
+		Log.d("CREATE DATABASE", "Create " + DatabaseContents.TABLE_CUSTOMER + " Successfully.");
 		
 		Log.d("CREATE DATABASE", "Create Database Successfully.");
 

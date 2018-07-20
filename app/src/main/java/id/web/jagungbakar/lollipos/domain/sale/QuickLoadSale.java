@@ -5,8 +5,7 @@ package id.web.jagungbakar.lollipos.domain.sale;
  * It's for overview report that doesn't need LineItem's information.
  * NOTE: This Sale instance throws NullPointerException
  * when calling method that involve with LineItem.
- * 
- * @author Refresh Team
+ *
  *
  */
 public class QuickLoadSale extends Sale {
@@ -23,7 +22,7 @@ public class QuickLoadSale extends Sale {
 	 * @param total
 	 * @param orders numbers of lineItem in this Sale.
 	 */
-	public QuickLoadSale(int id, String startTime, String endTime, String status, Double total, Integer orders) {
+	public QuickLoadSale(int id, String startTime, String endTime, String status, Double total, Integer orders, Integer customer_id) {
 		super(id, startTime, endTime, status, null);
 		this.total = total;
 		this.orders = orders;

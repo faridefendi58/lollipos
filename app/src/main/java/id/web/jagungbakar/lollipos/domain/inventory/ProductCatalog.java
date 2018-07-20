@@ -6,8 +6,7 @@ import id.web.jagungbakar.lollipos.techicalservices.inventory.InventoryDao;
 
 /**
  * Book that keeps list of Product.
- * 
- * @author Refresh Team
+ *
  *
  */
 public class ProductCatalog {

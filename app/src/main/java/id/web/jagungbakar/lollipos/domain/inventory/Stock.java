@@ -6,8 +6,7 @@ import id.web.jagungbakar.lollipos.techicalservices.inventory.InventoryDao;
 
 /**
  * Import log of ProductLot come in to store.
- * 
- * @author Refresh Team
+ *
  *
  */
 public class Stock {

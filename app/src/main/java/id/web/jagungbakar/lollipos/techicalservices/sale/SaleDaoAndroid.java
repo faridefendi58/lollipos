@@ -5,8 +5,10 @@ import java.util.Calendar;
 import java.util.List;
 
 import android.content.ContentValues;
+import android.util.Log;
 
 import id.web.jagungbakar.lollipos.domain.DateTimeStrategy;
+import id.web.jagungbakar.lollipos.domain.customer.Customer;
 import id.web.jagungbakar.lollipos.domain.inventory.LineItem;
 import id.web.jagungbakar.lollipos.domain.inventory.Product;
 import id.web.jagungbakar.lollipos.domain.sale.QuickLoadSale;
@@ -17,8 +19,7 @@ import id.web.jagungbakar.lollipos.techicalservices.DatabaseContents;
 
 /**
  * DAO used by android for Sale process.
- * 
- * @author Refresh Team
+ *
  *
  */
 public class SaleDaoAndroid implements SaleDao {
@@ -107,7 +108,8 @@ public class SaleDaoAndroid implements SaleDao {
         			content.getAsString("end_time"),
         			content.getAsString("status"),
         			content.getAsDouble("total"),
-        			content.getAsInteger("orders")      
+        			content.getAsInteger("orders"),
+        			content.getAsInteger("customer_id")
         			)
         	);
         }
@@ -172,6 +174,7 @@ public class SaleDaoAndroid implements SaleDao {
         content.put("payment", "n/a");
         content.put("total", sale.getTotal());
         content.put("orders", sale.getOrders());
+		content.put("customer_id", 0);
         content.put("start_time", sale.getStartTime());
         content.put("end_time", endTime);
 		database.update(DatabaseContents.TABLE_SALE.toString(), content);
@@ -183,6 +186,56 @@ public class SaleDaoAndroid implements SaleDao {
 		database.delete(DatabaseContents.TABLE_SALE_LINEITEM.toString(), id);
 	}
 
+	@Override
+	public void setCustomerSale(Sale sale, Customer customer) {
+		ContentValues content = new ContentValues();
+		content.put("_id", sale.getId());
+		content.put("customer_id", customer.getId());
+		database.update(DatabaseContents.TABLE_SALE.toString(), content);
+	}
 
+	@Override
+	public Customer getCustomerBySaleId(int id) {
+		String queryString = "SELECT t._id, t.customer_id, c.name, c.email, c.phone, c.address, c.status " +
+				"FROM " + DatabaseContents.TABLE_SALE + " t " +
+				"LEFT JOIN " + DatabaseContents.TABLE_CUSTOMER + " c ON c._id = t.customer_id " +
+				"WHERE t._id = " + id;
 
+		List<Object> objectList = database.select(queryString);
+		List<Customer> list = new ArrayList<Customer>();
+		if (objectList.size() > 0) {
+			for (Object object: objectList) {
+				ContentValues content = (ContentValues) object;
+				Log.e("SaleDAO", "content : "+ content.toString());
+				if (content != null) {
+					list.add(new Customer(
+							(content.get("name") != null)? content.getAsString("name") : "-",
+							(content.get("email") != null)? content.getAsString("email") : "-",
+							(content.get("phone") != null)? content.getAsString("phone") : "-",
+							(content.get("address") != null)? content.getAsString("address") : "-",
+							(content.get("status") != null)? content.getAsInteger("status") : 0
+					));
+				} else {
+					list.add(new Customer(
+							"-", "-", "-", "-", 0
+					));
+				}
+			}
+		}
+
+		return list.get(0);
+	}
+
+	@Override
+	public void removeCustomerSale(Sale sale) {
+		ContentValues content = new ContentValues();
+		content.put("_id", sale.getId());
+		content.put("customer_id", 0);
+		database.update(DatabaseContents.TABLE_SALE.toString(), content);
+	}
+
+	@Override
+	public List<Sale> getAllSaleByCustomerId(int id) {
+		return getAllSale(" WHERE status = 'ENDED' AND customer_id = "+ id);
+	}
 }

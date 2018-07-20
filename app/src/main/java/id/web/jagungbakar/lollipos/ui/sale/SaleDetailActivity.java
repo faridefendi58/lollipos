@@ -19,6 +19,7 @@ import android.widget.TextView;
 import id.web.jagungbakar.lollipos.R;
 import id.web.jagungbakar.lollipos.domain.CurrencyController;
 import id.web.jagungbakar.lollipos.domain.DateTimeStrategy;
+import id.web.jagungbakar.lollipos.domain.customer.Customer;
 import id.web.jagungbakar.lollipos.domain.inventory.LineItem;
 import id.web.jagungbakar.lollipos.domain.sale.Sale;
 import id.web.jagungbakar.lollipos.domain.sale.SaleLedger;
@@ -26,7 +27,6 @@ import id.web.jagungbakar.lollipos.techicalservices.NoDaoSetException;
 
 /**
  * UI for showing the detail of Sale in the record.
- * @author Refresh Team
  *
  */
 public class SaleDetailActivity extends Activity{
@@ -38,10 +38,12 @@ public class SaleDetailActivity extends Activity{
 	private Sale sale;
 	private int saleId;
 	private SaleLedger saleLedger;
+	private TextView customerBox;
+	private Customer customer;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		
+		super.onCreate(savedInstanceState);
 		try {
 			saleLedger = SaleLedger.getInstance();
 		} catch (NoDaoSetException e) {
@@ -50,6 +52,7 @@ public class SaleDetailActivity extends Activity{
 		
 		saleId = Integer.parseInt(getIntent().getStringExtra("id"));
 		sale = saleLedger.getSaleById(saleId);
+		customer = saleLedger.getCustomerBySaleId(saleId);
 		
 		initUI(savedInstanceState);
 	}
@@ -74,7 +77,6 @@ public class SaleDetailActivity extends Activity{
 	 * @param savedInstanceState
 	 */
 	private void initUI(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
 		setContentView(R.layout.layout_saledetail);
 		
 		initiateActionBar();
@@ -82,6 +84,7 @@ public class SaleDetailActivity extends Activity{
 		totalBox = (TextView) findViewById(R.id.totalBox);
 		dateBox = (TextView) findViewById(R.id.dateBox);
 		lineitemListView = (ListView) findViewById(R.id.lineitemList);
+		customerBox = (TextView) findViewById(R.id.customerBox);
 	}
 
 	/**
@@ -116,6 +119,7 @@ public class SaleDetailActivity extends Activity{
 	public void update() {
 		totalBox.setText(CurrencyController.getInstance().moneyFormat(sale.getTotal()) + "");
 		dateBox.setText(DateTimeStrategy.parseDate(sale.getEndTime(), "dd/MM/yy HH:s") + "");
+		customerBox.setText(customer.getName());
 		showList(sale.getAllLineItem());
 	}
 	

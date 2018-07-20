@@ -17,7 +17,6 @@ import id.web.jagungbakar.lollipos.ui.component.UpdatableFragment;
 
 /**
  * A dialog shows the total change and confirmation for Sale.
- * @author Refresh Team
  *
  */
 @SuppressLint("ValidFragment")
@@ -71,7 +70,12 @@ public class EndPaymentFragmentDialog extends DialogFragment  {
 	private void end(){
 		regis.endSale(DateTimeStrategy.getCurrentTime());
 		saleFragment.update();
-		reportFragment.update();
+		try {
+			reportFragment.update();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		this.dismiss();
 	}
 

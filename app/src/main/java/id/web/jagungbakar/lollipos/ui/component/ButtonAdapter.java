@@ -10,8 +10,7 @@ import android.widget.SimpleAdapter;
 
 /**
  * An adapter for ListView which able to assign a sub-button in each row data.
- * 
- * @author Refresh Team
+ *
  *
  */
 public class ButtonAdapter extends SimpleAdapter {

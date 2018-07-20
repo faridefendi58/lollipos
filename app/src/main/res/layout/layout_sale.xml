@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/cart"
@@ -119,25 +120,68 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:layout_margin="10sp">
+
+        <TextView
+            android:id="@+id/customer_name_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:textSize="8pt"
+            android:text=""
+            android:drawableLeft="@drawable/ic_person_pin_black_24dp"
+            android:onClick="customerOnClickHandler"
+            android:clickable="true"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/customer_id_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:weightSum="3">
+
+        <Button
+            android:id="@+id/customerButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:text="@string/customer"
+            android:drawableTop="@drawable/ic_add_customer"
+            android:clickable="true"
+            android:onClick="jumpToCustomer"
+            android:textSize="8pt"/>
 
         <Button
             android:id="@+id/clearButton"
-            style="@style/ButtonText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:background="@drawable/btn_red"
-            android:text="@string/clear" />
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:drawableTop="@drawable/ic_erase_list"
+            android:text="@string/clear"
+            android:textSize="8pt"/>
 
         <Button
             android:id="@+id/endButton"
-            style="@style/ButtonText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:background="@drawable/btn_green"
-            android:text="@string/confirm" />
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:text="@string/payment"
+            android:drawableTop="@drawable/ic_payment"
+            android:textSize="8pt"/>
     </LinearLayout>
 
 </LinearLayout>

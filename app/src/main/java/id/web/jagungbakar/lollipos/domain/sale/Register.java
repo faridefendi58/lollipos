@@ -1,10 +1,13 @@
 package id.web.jagungbakar.lollipos.domain.sale;
 
+import android.util.Log;
+
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Locale;
 
 import id.web.jagungbakar.lollipos.domain.DateTimeStrategy;
+import id.web.jagungbakar.lollipos.domain.customer.Customer;
 import id.web.jagungbakar.lollipos.domain.inventory.Inventory;
 import id.web.jagungbakar.lollipos.domain.inventory.LineItem;
 import id.web.jagungbakar.lollipos.domain.inventory.Product;
@@ -14,15 +17,15 @@ import id.web.jagungbakar.lollipos.techicalservices.sale.SaleDao;
 
 /**
  * Handles all Sale processes.
- * 
- * @author Refresh Team
+ *
  *
  */
 public class Register {
 	private static Register instance = null;
 	private static SaleDao saleDao = null;
 	private static Stock stock = null;
-	
+	private static Customer customer = null;
+
 	private Sale currentSale;
 	
 	private Register() throws NoDaoSetException {
@@ -175,5 +178,24 @@ public class Register {
 			cancleSale();
 		}
 	}
-	
+
+	public void setCustomer(Customer cst) {
+		if (currentSale != null) {
+			saleDao.setCustomerSale(currentSale, cst);
+			customer = cst;
+		} else {
+			Log.e("Register", "currentSale : ga ada.");
+		}
+	}
+
+	public Customer getCustomer() {
+
+		return customer;
+	}
+
+	public void removeCustomer() {
+		if (currentSale != null) {
+			saleDao.removeCustomerSale(currentSale);
+		}
+	}
 }

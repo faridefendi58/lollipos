@@ -34,6 +34,9 @@
         <activity
             android:name="id.web.jagungbakar.lollipos.ui.sale.SaleDetailActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="id.web.jagungbakar.lollipos.ui.customer.CustomerDetailActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

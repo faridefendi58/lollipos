@@ -2,8 +2,7 @@ package id.web.jagungbakar.lollipos.techicalservices;
 
 /**
  * Exception of when trying to getInstance() without inject its DAO.
- * 
- * @author Refresh Team
+ *
  *
  */
 public class NoDaoSetException extends Exception {

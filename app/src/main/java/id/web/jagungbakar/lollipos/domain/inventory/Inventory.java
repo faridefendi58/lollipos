@@ -5,8 +5,7 @@ import id.web.jagungbakar.lollipos.techicalservices.inventory.InventoryDao;
 
 /**
  * This class is service locater for Product Catalog and Stock.
- * 
- * @author Refresh Team
+ *
  * 
  */
 public class Inventory {

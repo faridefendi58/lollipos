@@ -8,8 +8,7 @@ import id.web.jagungbakar.lollipos.domain.LanguageController;
 
 /**
  * LineItem of Sale.
- * 
- * @author Refresh Team
+ *
  * 
  */
 public class LineItem {
