@@ -161,7 +161,7 @@
             android:drawableTop="@drawable/ic_add_customer"
             android:clickable="true"
             android:onClick="jumpToCustomer"
-            android:textSize="8pt"/>
+            android:textSize="14sp"/>
 
         <Button
             android:id="@+id/clearButton"
@@ -171,7 +171,7 @@
             android:background="@android:color/transparent"
             android:drawableTop="@drawable/ic_erase_list"
             android:text="@string/clear"
-            android:textSize="8pt"/>
+            android:textSize="14sp"/>
 
         <Button
             android:id="@+id/endButton"
@@ -181,7 +181,7 @@
             android:background="@android:color/transparent"
             android:text="@string/payment"
             android:drawableTop="@drawable/ic_payment"
-            android:textSize="8pt"/>
+            android:textSize="14sp"/>
     </LinearLayout>
 
 </LinearLayout>
