@@ -41,6 +41,9 @@
     <string name="language">Bahasa</string>
     <string name="payment">Pembayaran</string>
     <string name="update">Ubah</string>
+    <string name="favorite">Paling Disukai</string>
+    <string name="all_list">Semua Daftar</string>
+    <string name="transaction">Transaksi Penjualan</string>
 
     <string name="dialog_quit">Anda yakin ingin KELUAR?</string>
     <string name="dialog_remove_product">Anda yakin ingin MENGHAPUS produk ini?</string>

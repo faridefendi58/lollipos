@@ -30,13 +30,35 @@
         android:layout_weight="1" >
     </ListView>
 
-    <Button
-        android:id="@+id/addCustomerButton"
-        style="@style/ButtonText"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/btn_green"
-        android:ems="10"
-        android:text="@string/add_new_customer" />
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/addCustomerButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:text="@string/add_new_customer"
+            android:drawableTop="@drawable/ic_add_customer"
+            android:textSize="14sp"/>
+
+        <Button
+            android:id="@+id/cartButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:drawableTop="@drawable/ic_cart"
+            android:text="@string/transaction"
+            android:textSize="14sp"
+            android:clickable="true"
+            android:onClick="backToTransaction"/>
+
+    </LinearLayout>
 
 </LinearLayout>
