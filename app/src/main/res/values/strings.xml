@@ -37,6 +37,7 @@
     <string name="inventory">Inventory</string>
     <string name="sale">Sale</string>
     <string name="report">Report</string>
+    <string name="invoice">Invoice</string>
     <string name="customer">Customer</string>
     <string name="language">Language</string>
     <string name="payment">Payment</string>
@@ -73,6 +74,8 @@
     <string name="currency">Currency</string>
     <string name="currency_idr">IDR</string>
     <string name="currency_usd">USD</string>
+
+    <string name="params">Parameters</string>
 
     
     <string-array name="period">

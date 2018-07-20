@@ -37,6 +37,7 @@
     <string name="inventory">Persediaan</string>
     <string name="sale">Penjualan</string>
     <string name="report">Laporan</string>
+    <string name="invoice">Tagihan</string>
     <string name="customer">Pelanggan</string>
     <string name="language">Bahasa</string>
     <string name="payment">Pembayaran</string>
@@ -73,6 +74,8 @@
     <string name="currency">Mata Uang</string>
     <string name="currency_idr">IDR</string>
     <string name="currency_usd">USD</string>
+
+    <string name="params">Parameter</string>
 
     <string-array name="period">
         <item>Harian</item>
