@@ -18,9 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            android:drawableLeft="@drawable/barcode_icon_blue"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"
+            android:drawableLeft="@drawable/ic_barcode_scanner"
             android:text="" />
 
         <EditText
