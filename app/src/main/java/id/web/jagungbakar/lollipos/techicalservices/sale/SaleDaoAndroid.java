@@ -238,4 +238,13 @@ public class SaleDaoAndroid implements SaleDao {
 	public List<Sale> getAllSaleByCustomerId(int id) {
 		return getAllSale(" WHERE status = 'ENDED' AND customer_id = "+ id);
 	}
+
+	@Override
+	public void removeSale(Sale sale) {
+		int sale_id = sale.getId();
+		database.delete(DatabaseContents.TABLE_SALE.toString(), sale_id);
+		String sql = "DELETE FROM " + DatabaseContents.TABLE_SALE_LINEITEM + " " +
+				"WHERE sale_id = " + sale_id;
+		database.execute(sql);
+	}
 }

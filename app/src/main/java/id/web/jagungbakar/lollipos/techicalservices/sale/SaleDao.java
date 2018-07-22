@@ -96,4 +96,6 @@ public interface SaleDao {
 	void removeCustomerSale(Sale sale);
 
 	List<Sale> getAllSaleByCustomerId(int id);
+
+	void removeSale(Sale sale);
 }

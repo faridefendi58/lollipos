@@ -85,4 +85,8 @@ public class SaleLedger {
 	public List<Sale> getAllSaleByCustomerId(int customer_id) {
 		return saleDao.getAllSaleByCustomerId(customer_id);
 	}
+
+	public void removeSale(Sale sale) {
+		saleDao.removeSale(sale);
+	}
 }
