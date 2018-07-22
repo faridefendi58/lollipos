@@ -62,6 +62,7 @@
     <string name="please_input_all">Please fulfill all data.</string>
     <string name="need_money">Need</string>
     <string name="customer_order">Customer Orders</string>
+    <string name="invoice_detail">Detail Invoice</string>
 
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
@@ -76,8 +77,10 @@
     <string name="currency_usd">USD</string>
 
     <string name="params">Parameters</string>
+    <string name="params_store_name">Store Name</string>
+    <string name="params_store_address">Store Address</string>
+    <string name="params_store_phone">Store Phone</string>
 
-    
     <string-array name="period">
         <item>Daily</item>
         <item>Weekly</item>

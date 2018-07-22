@@ -19,8 +19,10 @@ import id.web.jagungbakar.lollipos.R;
 import id.web.jagungbakar.lollipos.domain.CurrencyController;
 import id.web.jagungbakar.lollipos.domain.DateTimeStrategy;
 import id.web.jagungbakar.lollipos.domain.LanguageController;
+import id.web.jagungbakar.lollipos.domain.ParamsController;
 import id.web.jagungbakar.lollipos.domain.customer.CustomerService;
 import id.web.jagungbakar.lollipos.domain.inventory.Inventory;
+import id.web.jagungbakar.lollipos.domain.params.ParamService;
 import id.web.jagungbakar.lollipos.domain.sale.Register;
 import id.web.jagungbakar.lollipos.domain.sale.SaleLedger;
 import id.web.jagungbakar.lollipos.techicalservices.AndroidDatabase;
@@ -30,6 +32,8 @@ import id.web.jagungbakar.lollipos.techicalservices.customer.CustomerDao;
 import id.web.jagungbakar.lollipos.techicalservices.customer.CustomerDaoAndroid;
 import id.web.jagungbakar.lollipos.techicalservices.inventory.InventoryDao;
 import id.web.jagungbakar.lollipos.techicalservices.inventory.InventoryDaoAndroid;
+import id.web.jagungbakar.lollipos.techicalservices.params.ParamDao;
+import id.web.jagungbakar.lollipos.techicalservices.params.ParamDaoAndroid;
 import id.web.jagungbakar.lollipos.techicalservices.sale.SaleDao;
 import id.web.jagungbakar.lollipos.techicalservices.sale.SaleDaoAndroid;
 
@@ -54,14 +58,18 @@ public class SplashScreenActivity extends Activity {
 		InventoryDao inventoryDao = new InventoryDaoAndroid(database);
 		SaleDao saleDao = new SaleDaoAndroid(database);
 		CustomerDao customerDao = new CustomerDaoAndroid(database);
+		ParamDao paramDao = new ParamDaoAndroid(database);
+
 		DatabaseExecutor.setDatabase(database);
 		LanguageController.setDatabase(database);
 		CurrencyController.setDatabase(database);
+		ParamsController.setDatabase(database);
 
 		Inventory.setInventoryDao(inventoryDao);
 		Register.setSaleDao(saleDao);
 		SaleLedger.setSaleDao(saleDao);
 		CustomerService.setCustomerDao(customerDao);
+		ParamService.setParamDao(paramDao);
 
 		DateTimeStrategy.setLocale("id", "ID");
 		setLanguage(LanguageController.getInstance().getLanguage());

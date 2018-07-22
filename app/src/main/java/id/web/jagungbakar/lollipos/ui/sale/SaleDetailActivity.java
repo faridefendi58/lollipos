@@ -66,8 +66,8 @@ public class SaleDetailActivity extends Activity{
 		if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
 			ActionBar actionBar = getActionBar();
 			actionBar.setDisplayHomeAsUpEnabled(true);
-			actionBar.setTitle(getResources().getString(R.string.sale));
-			actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#33B5E5")));
+			actionBar.setTitle(getResources().getString(R.string.invoice_detail));
+			//actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#33B5E5")));
 		}
 	}
 	

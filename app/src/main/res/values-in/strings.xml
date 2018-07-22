@@ -62,6 +62,7 @@
     <string name="please_input_all">Silakan lengkapi semua data.</string>
     <string name="need_money">Diperlukan</string>
     <string name="customer_order">Daftar Transaksi</string>
+    <string name="invoice_detail">Rincian Tagihan</string>
 
     <string name="title_home">Beranda</string>
     <string name="title_dashboard">Dasbor</string>
@@ -76,6 +77,9 @@
     <string name="currency_usd">USD</string>
 
     <string name="params">Parameter</string>
+    <string name="params_store_name">Nama Toko</string>
+    <string name="params_store_address">Alamat Toko</string>
+    <string name="params_store_phone">No. Telepon</string>
 
     <string-array name="period">
         <item>Harian</item>

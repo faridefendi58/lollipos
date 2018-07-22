@@ -62,7 +62,7 @@ public class ParamDaoAndroid implements ParamDao {
 
     @Override
     public List<Params> getAllParams() {
-        return getAllParams(" WHERE status = 1");
+        return getAllParams(" WHERE 1");
     }
 
     /**
@@ -83,7 +83,7 @@ public class ParamDaoAndroid implements ParamDao {
      * @return list of params.
      */
     private List<Params> getParamBy(String reference, String value) {
-        String condition = " WHERE " + reference + " = " + value + " ;";
+        String condition = " WHERE " + reference + " = '" + value + "' ;";
         return getAllParams(condition);
     }
 

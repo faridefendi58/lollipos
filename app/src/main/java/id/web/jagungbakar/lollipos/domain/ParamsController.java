@@ -5,6 +5,7 @@ import java.util.List;
 import android.content.ContentValues;
 import android.util.Log;
 
+import id.web.jagungbakar.lollipos.R;
 import id.web.jagungbakar.lollipos.techicalservices.Database;
 import id.web.jagungbakar.lollipos.techicalservices.DatabaseContents;
 
@@ -46,11 +47,12 @@ public class ParamsController {
                 + "_id INTEGER PRIMARY KEY,"
                 + "name TEXT(100),"
                 + "value TEXT(256),"
-                + "type TEXT(16),"
+                + "type TEXT(16) default 'text',"
                 + "description TEXT(256),"
                 + "date_added DATETIME"
 
                 + ");");
+
         Log.d("CREATE DATABASE", "Create " + DatabaseContents.TABLE_PARAMS + " Successfully.");
     }
 
