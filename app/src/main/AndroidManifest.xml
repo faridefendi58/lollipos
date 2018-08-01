@@ -40,6 +40,10 @@
         <activity
             android:name="id.web.jagungbakar.lollipos.ui.params.ParamsActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="id.web.jagungbakar.lollipos.ui.DashboardActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
     </application>
 
 </manifest>
