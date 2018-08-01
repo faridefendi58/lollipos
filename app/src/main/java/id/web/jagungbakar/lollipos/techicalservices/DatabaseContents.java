@@ -16,7 +16,8 @@ public enum DatabaseContents {
 	TABLE_STOCK_SUM("stock_sum"),
 	TABLE_CUSTOMER("customer"),
 	LANGUAGE("language"),
-	CURRENCY("currency");
+	CURRENCY("currency"),
+	TABLE_PARAMS("params");
 
 	private String name;
 	

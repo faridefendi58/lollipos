@@ -27,7 +27,7 @@ public class DateTimeStrategy {
 	 */
 	public static void setLocale(String lang, String reg) {
 		locale = new Locale(lang, reg);
-		dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", locale);
+		dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", locale);
 	}
 	
 	/**

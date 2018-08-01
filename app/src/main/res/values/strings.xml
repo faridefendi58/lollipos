@@ -37,6 +37,7 @@
     <string name="inventory">Inventory</string>
     <string name="sale">Sale</string>
     <string name="report">Report</string>
+    <string name="invoice">Invoice</string>
     <string name="customer">Customer</string>
     <string name="language">Language</string>
     <string name="payment">Payment</string>
@@ -44,11 +45,14 @@
     <string name="favorite">Favorite</string>
     <string name="all_list">All List</string>
     <string name="transaction">Transaction</string>
+    <string name="remove_invoice">Remove Invoice</string>
+    <string name="print_invoice">Print Invoice</string>
 
     <string name="dialog_quit">Are you sure you want to QUIT?</string>
     <string name="dialog_remove_product">Are you sure you want to REMOVE this product?</string>
     <string name="dialog_remove_customer">Are you sure you want to REMOVE this customer?</string>
     <string name="dialog_clear_sale">Are you sure you want to CLEAR this sale?</string>
+    <string name="dialog_remove_invoice">Are you sure you want to Remove this invoice?</string>
     <string name="hint_empty_sale">Sale is empty.</string>
     <string name="quit">Quit</string>
     <string name="no">No</string>
@@ -61,6 +65,7 @@
     <string name="please_input_all">Please fulfill all data.</string>
     <string name="need_money">Need</string>
     <string name="customer_order">Customer Orders</string>
+    <string name="invoice_detail">Detail Invoice</string>
 
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
@@ -74,7 +79,11 @@
     <string name="currency_idr">IDR</string>
     <string name="currency_usd">USD</string>
 
-    
+    <string name="params">Parameters</string>
+    <string name="params_store_name">Store Name</string>
+    <string name="params_store_address">Store Address</string>
+    <string name="params_store_phone">Store Phone</string>
+
     <string-array name="period">
         <item>Daily</item>
         <item>Weekly</item>

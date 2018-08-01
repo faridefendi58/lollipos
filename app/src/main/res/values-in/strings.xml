@@ -37,6 +37,7 @@
     <string name="inventory">Persediaan</string>
     <string name="sale">Penjualan</string>
     <string name="report">Laporan</string>
+    <string name="invoice">Tagihan</string>
     <string name="customer">Pelanggan</string>
     <string name="language">Bahasa</string>
     <string name="payment">Pembayaran</string>
@@ -44,11 +45,14 @@
     <string name="favorite">Paling Disukai</string>
     <string name="all_list">Semua Daftar</string>
     <string name="transaction">Transaksi Penjualan</string>
+    <string name="remove_invoice">Hapus Tagihan</string>
+    <string name="print_invoice">Cetak Tagihan</string>
 
     <string name="dialog_quit">Anda yakin ingin KELUAR?</string>
     <string name="dialog_remove_product">Anda yakin ingin MENGHAPUS produk ini?</string>
     <string name="dialog_remove_customer">Anda yakin ingin MENGHAPUS pelanggan ini?</string>
     <string name="dialog_clear_sale">Anda yakin ingin MEMBERSIHKAN penjualan ini?</string>
+    <string name="dialog_remove_invoice">Anda yakin ingin MENGHAPUS tagihan ini?</string>
     <string name="hint_empty_sale">Data penjualan kosong.</string>
     <string name="quit">Keluar</string>
     <string name="no">Tidak</string>
@@ -61,6 +65,7 @@
     <string name="please_input_all">Silakan lengkapi semua data.</string>
     <string name="need_money">Diperlukan</string>
     <string name="customer_order">Daftar Transaksi</string>
+    <string name="invoice_detail">Rincian Tagihan</string>
 
     <string name="title_home">Beranda</string>
     <string name="title_dashboard">Dasbor</string>
@@ -73,6 +78,11 @@
     <string name="currency">Mata Uang</string>
     <string name="currency_idr">IDR</string>
     <string name="currency_usd">USD</string>
+
+    <string name="params">Parameter</string>
+    <string name="params_store_name">Nama Toko</string>
+    <string name="params_store_address">Alamat Toko</string>
+    <string name="params_store_phone">No. Telepon</string>
 
     <string-array name="period">
         <item>Harian</item>

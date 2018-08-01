@@ -34,6 +34,10 @@
                         android:title="@string/currency_usd"/>
                 </menu>
             </item>
+
+            <item android:id="@+id/params"
+                android:title="@string/params" >
+            </item>
         </menu>
     </item>
     

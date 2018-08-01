@@ -17,12 +17,10 @@
 
         <Button
             android:id="@+id/previousButton"
-            style="@style/ButtonText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/btn_yellow"
-            android:text="@string/previous"
-            android:textSize="16sp" />
+            android:background="@drawable/ic_arrow_back_24dp"
+            android:textSize="10sp" />
 
         <TextView
             android:id="@+id/currentBox"
@@ -30,17 +28,15 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:gravity="center"
-            android:textSize="16sp"
+            android:textSize="8sp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/nextButton"
-            style="@style/ButtonText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/btn_yellow"
-            android:text="@string/next"
-            android:textSize="16sp" />
+            android:background="@drawable/ic_arrow_forward_24dp"
+            android:textSize="10sp" />
     </LinearLayout>
 
     <!-- 
@@ -71,7 +67,7 @@
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="2"
-                android:background="#33B5E5"
+                android:background="@color/colorRed"
                 android:gravity="center"
                 android:paddingRight="3dp"
                 android:text="@string/id"
@@ -92,7 +88,7 @@
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="1.5"
-                android:background="#33B5E5"
+                android:background="@color/colorRed"
                 android:gravity="center"
                 android:paddingRight="3dp"
                 android:text="@string/date"
@@ -114,7 +110,7 @@
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:layout_weight="0.75"
-                android:background="#33B5E5"
+                android:background="@color/colorRed"
                 android:gravity="center"
                 android:paddingRight="3dp"
                 android:text="@string/total"
@@ -155,7 +151,7 @@
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="2"
-                android:background="#0099CC"
+                android:background="@color/colorRed"
                 android:gravity="center"
                 android:paddingRight="3dp"
                 android:text="@string/total"
@@ -178,7 +174,7 @@
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:layout_weight="0.75"
-                android:background="#0099CC"
+                android:background="@color/colorRed"
                 android:gravity="right|center_vertical"
                 android:paddingRight="10dp"
                 android:textColor="#FFFFFF"

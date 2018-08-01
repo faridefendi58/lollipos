@@ -7,11 +7,16 @@ import java.util.Map;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -24,6 +29,7 @@ import id.web.jagungbakar.lollipos.domain.inventory.LineItem;
 import id.web.jagungbakar.lollipos.domain.sale.Sale;
 import id.web.jagungbakar.lollipos.domain.sale.SaleLedger;
 import id.web.jagungbakar.lollipos.techicalservices.NoDaoSetException;
+import id.web.jagungbakar.lollipos.ui.MainActivity;
 
 /**
  * UI for showing the detail of Sale in the record.
@@ -53,6 +59,8 @@ public class SaleDetailActivity extends Activity{
 		saleId = Integer.parseInt(getIntent().getStringExtra("id"));
 		sale = saleLedger.getSaleById(saleId);
 		customer = saleLedger.getCustomerBySaleId(saleId);
+
+		String dt = DateTimeStrategy.getCurrentTime();
 		
 		initUI(savedInstanceState);
 	}
@@ -66,8 +74,8 @@ public class SaleDetailActivity extends Activity{
 		if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
 			ActionBar actionBar = getActionBar();
 			actionBar.setDisplayHomeAsUpEnabled(true);
-			actionBar.setTitle(getResources().getString(R.string.sale));
-			actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#33B5E5")));
+			actionBar.setTitle(getResources().getString(R.string.invoice_detail));
+			//actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#33B5E5")));
 		}
 	}
 	
@@ -127,5 +135,37 @@ public class SaleDetailActivity extends Activity{
 	protected void onResume() {
 		super.onResume();
 		update();
+	}
+
+	public void printInvoice(View v) {
+
+	}
+
+	public void removeInvoice(View v) {
+		AlertDialog.Builder quitDialog = new AlertDialog.Builder(
+				SaleDetailActivity.this);
+		quitDialog.setTitle(getResources().getString(R.string.dialog_remove_invoice));
+		quitDialog.setPositiveButton(getResources().getString(R.string.remove), new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				try {
+					saleLedger.removeSale(sale);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+				Intent newActivity = new Intent(SaleDetailActivity.this,
+						MainActivity.class);
+				startActivity(newActivity);
+			}
+		});
+
+		quitDialog.setNegativeButton(getResources().getString(R.string.no), new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+
+			}
+		});
+		quitDialog.show();
 	}
 }
