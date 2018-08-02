@@ -70,6 +70,8 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_transaction">Transaction</string>
+    <string name="title_reports">Reports</string>
 
     <string name="lang_en">English</string>
     <string name="lang_id">Bahasa Indonesia</string>

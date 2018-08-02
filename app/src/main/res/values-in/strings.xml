@@ -70,6 +70,8 @@
     <string name="title_home">Beranda</string>
     <string name="title_dashboard">Dasbor</string>
     <string name="title_notifications">Notifikasi</string>
+    <string name="title_transaction">Transaksi</string>
+    <string name="title_reports">Laporan</string>
 
     <string name="lang_en">English</string>
     <string name="lang_id">Bahasa Indonesia</string>
