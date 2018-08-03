@@ -93,4 +93,8 @@ public class SaleLedger {
 	public int getTotalIncome(String time_frame) {
 		return saleDao.getTotalIncome(time_frame);
 	}
+
+	public int getTotalTransaction(String time_frame) {
+		return saleDao.getTotalTransaction(time_frame);
+	}
 }

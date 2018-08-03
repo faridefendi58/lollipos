@@ -100,4 +100,6 @@ public interface SaleDao {
 	void removeSale(Sale sale);
 
 	int getTotalIncome(String time_frame);
+
+	int getTotalTransaction(String time_frame);
 }

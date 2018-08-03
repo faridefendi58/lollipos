@@ -28,6 +28,10 @@ public class DashboardFragment extends Fragment {
     private TextView txt_income_yesterday;
     private TextView txt_income_this_month;
     private TextView txt_income_last_month;
+    private TextView txt_transaction_today;
+    private TextView txt_transaction_yesterday;
+    private TextView txt_transaction_this_month;
+    private TextView txt_transaction_last_month;
 
     private ParamCatalog paramCatalog;
     private Sale sale;
@@ -44,6 +48,11 @@ public class DashboardFragment extends Fragment {
         txt_income_yesterday = (TextView) view.findViewById(R.id.txt_income_yesterday);
         txt_income_this_month = (TextView) view.findViewById(R.id.txt_income_this_month);
         txt_income_last_month = (TextView) view.findViewById(R.id.txt_income_last_month);
+
+        txt_transaction_today = (TextView) view.findViewById(R.id.txt_transaction_today);
+        txt_transaction_yesterday = (TextView) view.findViewById(R.id.txt_transaction_yesterday);
+        txt_transaction_this_month = (TextView) view.findViewById(R.id.txt_transaction_this_month);
+        txt_transaction_last_month = (TextView) view.findViewById(R.id.txt_transaction_last_month);
 
         initUi();
 
@@ -76,9 +85,15 @@ public class DashboardFragment extends Fragment {
         txt_income_this_month.setText(""+ this_month_income);
         txt_income_last_month.setText(""+ last_month_income);
 
-        //Log.e("Dump", "today_income : "+ today_income);
-        //Log.e("Dump", "yesterday_income : "+ yesterday_income);
-        //Log.e("Dump", "this_month_income : "+ this_month_income);
+        int today_transaction = saleLedger.getTotalTransaction("today");
+        int yesterday_transaction = saleLedger.getTotalTransaction("yesterday");
+        int this_month_transaction = saleLedger.getTotalTransaction("this_month");
+        int last_month_transaction = saleLedger.getTotalTransaction("last_month");
+
+        txt_transaction_today.setText(""+ today_transaction);
+        txt_transaction_yesterday.setText(""+ yesterday_transaction);
+        txt_transaction_this_month.setText(""+ this_month_transaction);
+        txt_transaction_last_month.setText(""+ last_month_transaction);
     }
 
     @Override

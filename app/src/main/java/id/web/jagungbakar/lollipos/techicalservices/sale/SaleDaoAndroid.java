@@ -250,19 +250,17 @@ public class SaleDaoAndroid implements SaleDao {
 
 	@Override
 	public int getTotalIncome(String time_frame) {
-		String queryString = "SELECT SUM(total) AS sum_total " +
+		String queryString = "SELECT end_time, SUM(total) AS sum_total, COUNT(_id) AS count " +
 				"FROM " + DatabaseContents.TABLE_SALE +
 				" WHERE status = 'ENDED'";
 		if (time_frame.equals("today")) {
-			queryString += " AND date(datetime(end_time / 1000 , 'unixepoch')) = date('now')";
+			queryString += " AND strftime('%Y-%m-%d',end_time) = date('now')";
 		} else if (time_frame.equals("yesterday")) {
-			queryString += " AND strftime('%Y-%m-%d',end_time) = strftime('%Y-%m-%d',date('now', '-1 day'))";
+			queryString += " AND strftime('%Y-%m-%d',end_time) = date('now', '-1 day')";
 		} else if (time_frame.equals("this_month")) {
-			queryString += " AND strftime('%Y',end_time) = strftime('%Y',date('now')) AND  strftime('%m',end_time) = strftime('%m',date('now'))";
-			// or
-			//queryString += " AND end_time BETWEEN datetime('now', 'start of month') AND datetime('now', 'localtime')";
+			queryString += " AND end_time BETWEEN datetime('now', 'start of month') AND datetime('now', 'localtime')";
 		} else if (time_frame.equals("last_month")) {
-			queryString += " AND end_time >= datetime('now', 'start of month')";
+			queryString += " AND strftime('%Y-%m', end_time) = strftime('%Y-%m', datetime('now', 'start of month', '-1 month'))";
 		} else {
 			queryString += " AND strftime('%Y-%m-%d',end_time) = strftime('%Y-%m-%d',date('now'))";
 		}
@@ -273,9 +271,42 @@ public class SaleDaoAndroid implements SaleDao {
 			ContentValues content = (ContentValues) object;
 			if (content != null
 					&& content.containsKey("sum_total")
-					&& content.getAsString("sum_total") != null) {
+					&& content.getAsString("sum_total") != null
+					&& !content.getAsString("sum_total").equals("1.395e+06")
+					&& !content.getAsString("sum_total").contains("e+")) {
 				total = content.getAsInteger("sum_total");
-				//Log.e("tag", "content :"+ content.toString());
+			}
+			Log.e("tag", "content :"+ content.toString());
+		}
+
+		return total;
+	}
+
+	@Override
+	public int getTotalTransaction(String time_frame) {
+		String queryString = "SELECT COUNT(_id) AS count " +
+				"FROM " + DatabaseContents.TABLE_SALE +
+				" WHERE status = 'ENDED'";
+		if (time_frame.equals("today")) {
+			queryString += " AND strftime('%Y-%m-%d',end_time) = date('now')";
+		} else if (time_frame.equals("yesterday")) {
+			queryString += " AND strftime('%Y-%m-%d',end_time) = date('now', '-1 day')";
+		} else if (time_frame.equals("this_month")) {
+			queryString += " AND end_time BETWEEN datetime('now', 'start of month') AND datetime('now', 'localtime')";
+		} else if (time_frame.equals("last_month")) {
+			queryString += " AND strftime('%Y-%m', end_time) = strftime('%Y-%m', datetime('now', 'start of month', '-1 month'))";
+		} else {
+			queryString += " AND strftime('%Y-%m-%d',end_time) = strftime('%Y-%m-%d',date('now'))";
+		}
+
+		List<Object> objectList = database.select(queryString);
+		int total = 0;
+		for (Object object: objectList) {
+			ContentValues content = (ContentValues) object;
+			if (content != null
+					&& content.containsKey("count")
+					&& content.getAsString("count") != null) {
+				total = content.getAsInteger("count");
 			}
 		}
 

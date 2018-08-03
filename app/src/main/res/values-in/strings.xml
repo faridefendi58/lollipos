@@ -73,6 +73,13 @@
     <string name="title_transaction">Transaksi</string>
     <string name="title_reports">Laporan</string>
 
+    <string name="dashboard_income">Pendapatan</string>
+    <string name="dashboard_transaction">Transaksi</string>
+    <string name="dashboard_today">Hari Ini</string>
+    <string name="dashboard_yesterday">Kemarin</string>
+    <string name="dashboard_this_month">Bulan Ini</string>
+    <string name="dashboard_previous_month">Bulan Lalu</string>
+
     <string name="lang_en">English</string>
     <string name="lang_id">Bahasa Indonesia</string>
     <string name="hint_lang">Silakan restart aplikasi untuk menerapkan pengaturan bahasa ini.</string>

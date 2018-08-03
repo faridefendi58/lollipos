@@ -18,7 +18,7 @@ import android.util.Log;
  */
 public class AndroidDatabase extends SQLiteOpenHelper implements Database {
 
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 3;
 
 	/**
 	 * Constructs a new AndroidDatabase.
