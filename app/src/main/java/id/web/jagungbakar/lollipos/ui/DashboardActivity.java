@@ -1,6 +1,7 @@
 package id.web.jagungbakar.lollipos.ui;
 
 import android.app.ActionBar;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +9,9 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import id.web.jagungbakar.lollipos.R;
 import id.web.jagungbakar.lollipos.domain.params.ParamCatalog;
@@ -19,7 +23,6 @@ import id.web.jagungbakar.lollipos.ui.dashboard.ReportFragment;
 public class DashboardActivity extends AppCompatActivity
         implements BottomNavigationView.OnNavigationItemSelectedListener {
 
-    private ParamCatalog paramCatalog;
     private android.support.v7.app.ActionBar actionBar;
 
     @Override
@@ -37,16 +40,13 @@ public class DashboardActivity extends AppCompatActivity
         actionBar.setTitle(getResources().getString(R.string.title_dashboard));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        try {
-            paramCatalog = ParamService.getInstance().getParamCatalog();
-            /*if (paramCatalog.getParamByName("store_name") != null) {
-                actionBar.setTitle(paramCatalog.getParamByName("store_name").getValue());
-                actionBar.setIcon(getResources().getDrawable(R.drawable.ic_launcher));
-                //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            }*/
-        } catch (NoDaoSetException e) {
-            e.printStackTrace();
-        }
+        /*final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        }, 1000);*/
     }
 
     @Override

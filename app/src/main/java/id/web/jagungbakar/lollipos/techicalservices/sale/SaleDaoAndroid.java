@@ -247,4 +247,38 @@ public class SaleDaoAndroid implements SaleDao {
 				"WHERE sale_id = " + sale_id;
 		database.execute(sql);
 	}
+
+	@Override
+	public int getTotalIncome(String time_frame) {
+		String queryString = "SELECT SUM(total) AS sum_total " +
+				"FROM " + DatabaseContents.TABLE_SALE +
+				" WHERE status = 'ENDED'";
+		if (time_frame.equals("today")) {
+			queryString += " AND date(datetime(end_time / 1000 , 'unixepoch')) = date('now')";
+		} else if (time_frame.equals("yesterday")) {
+			queryString += " AND strftime('%Y-%m-%d',end_time) = strftime('%Y-%m-%d',date('now', '-1 day'))";
+		} else if (time_frame.equals("this_month")) {
+			queryString += " AND strftime('%Y',end_time) = strftime('%Y',date('now')) AND  strftime('%m',end_time) = strftime('%m',date('now'))";
+			// or
+			//queryString += " AND end_time BETWEEN datetime('now', 'start of month') AND datetime('now', 'localtime')";
+		} else if (time_frame.equals("last_month")) {
+			queryString += " AND end_time >= datetime('now', 'start of month')";
+		} else {
+			queryString += " AND strftime('%Y-%m-%d',end_time) = strftime('%Y-%m-%d',date('now'))";
+		}
+
+		List<Object> objectList = database.select(queryString);
+		int total = 0;
+		for (Object object: objectList) {
+			ContentValues content = (ContentValues) object;
+			if (content != null
+					&& content.containsKey("sum_total")
+					&& content.getAsString("sum_total") != null) {
+				total = content.getAsInteger("sum_total");
+				//Log.e("tag", "content :"+ content.toString());
+			}
+		}
+
+		return total;
+	}
 }

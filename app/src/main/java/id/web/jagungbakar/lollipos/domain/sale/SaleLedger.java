@@ -89,4 +89,8 @@ public class SaleLedger {
 	public void removeSale(Sale sale) {
 		saleDao.removeSale(sale);
 	}
+
+	public int getTotalIncome(String time_frame) {
+		return saleDao.getTotalIncome(time_frame);
+	}
 }
