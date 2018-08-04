@@ -3,7 +3,12 @@
 
     <string name="app_name">LolliPOS</string>
     <string name="grreting">Welcome To LolliPOS</string>
-    <string name="action_settings">Peralatan</string>
+    <string name="action_settings">Pengaturan</string>
+    <string name="action_help">Bantuan</string>
+    <string name="action_profile">Profil</string>
+    <string name="action_shop">Toko</string>
+    <string name="action_printer">Printer dan Struk</string>
+    <string name="action_syncronize">Sinkronisasi</string>
     <string name="total">Total</string>
     <string name="barcode">Barcode</string>
     <string name="cancel">Batal</string>
@@ -68,7 +73,7 @@
     <string name="invoice_detail">Rincian Tagihan</string>
 
     <string name="title_home">Beranda</string>
-    <string name="title_dashboard">Dasbor</string>
+    <string name="title_dashboard">Dasboard</string>
     <string name="title_notifications">Notifikasi</string>
     <string name="title_transaction">Transaksi</string>
     <string name="title_reports">Laporan</string>

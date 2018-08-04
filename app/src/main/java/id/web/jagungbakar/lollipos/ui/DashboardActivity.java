@@ -1,22 +1,16 @@
 package id.web.jagungbakar.lollipos.ui;
 
-import android.app.ActionBar;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import id.web.jagungbakar.lollipos.R;
-import id.web.jagungbakar.lollipos.domain.params.ParamCatalog;
-import id.web.jagungbakar.lollipos.domain.params.ParamService;
-import id.web.jagungbakar.lollipos.techicalservices.NoDaoSetException;
 import id.web.jagungbakar.lollipos.ui.dashboard.DashboardFragment;
 import id.web.jagungbakar.lollipos.ui.dashboard.ReportFragment;
 
@@ -37,16 +31,9 @@ public class DashboardActivity extends AppCompatActivity
         navigation.setOnNavigationItemSelectedListener(this);
 
         actionBar = getSupportActionBar();
-        actionBar.setTitle(getResources().getString(R.string.title_dashboard));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        /*final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-
-            }
-        }, 1000);*/
+        actionBar.setTitle(getResources().getString(R.string.title_home));
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(getResources().getDrawable(R.drawable.ic_launcher));
     }
 
     @Override
@@ -56,7 +43,7 @@ public class DashboardActivity extends AppCompatActivity
         switch (item.getItemId()) {
             case R.id.navigation_home:
                 fragment = new DashboardFragment();
-                actionBar.setTitle(getResources().getString(R.string.title_dashboard));
+                actionBar.setTitle(getResources().getString(R.string.title_home));
                 break;
 
             case R.id.navigation_transaction:
@@ -84,5 +71,16 @@ public class DashboardActivity extends AppCompatActivity
             return true;
         }
         return false;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
+
+        MenuItem item = menu.findItem(R.id.navigation_home);
+        item.setVisible(false);
+
+        return true;
     }
 }
