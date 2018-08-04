@@ -59,4 +59,8 @@
         android:id="@+id/help"
         android:title="@string/action_help">
     </item>
+    <item
+        android:id="@+id/logout"
+        android:title="@string/action_logout">
+    </item>
 </menu>

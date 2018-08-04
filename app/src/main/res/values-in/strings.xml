@@ -3,12 +3,15 @@
 
     <string name="app_name">LolliPOS</string>
     <string name="grreting">Welcome To LolliPOS</string>
+
     <string name="action_settings">Pengaturan</string>
     <string name="action_help">Bantuan</string>
     <string name="action_profile">Profil</string>
     <string name="action_shop">Toko</string>
     <string name="action_printer">Printer dan Struk</string>
     <string name="action_syncronize">Sinkronisasi</string>
+    <string name="action_logout">Logout</string>
+
     <string name="total">Total</string>
     <string name="barcode">Barcode</string>
     <string name="cancel">Batal</string>
@@ -118,5 +121,22 @@
         <item name="android:shadowDy">1</item>
         <item name="android:shadowRadius">2</item>
     </style>
+
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_name">Nama Lengkap</string>
+    <string name="prompt_phone">Nomor Telepon</string>
+    <string name="action_sign_in">Masuk atau mendaftar</string>
+    <string name="action_sign_in_short">Masuk</string>
+    <string name="action_register">Mendaftar sekarang ?</string>
+    <string name="action_submit">Simpan</string>
+    <string name="error_invalid_email">Alamat email tidak valid</string>
+    <string name="error_invalid_password">Password terlalu pendek</string>
+    <string name="error_incorrect_password">Password tidak sesuai</string>
+    <string name="error_field_required">Kolom ini tidak boleh dikosongi</string>
+    <string name="permission_rationale">"Izin kontak diperlukan untuk menyediakan penyelesaian email."</string>
 
 </resources>

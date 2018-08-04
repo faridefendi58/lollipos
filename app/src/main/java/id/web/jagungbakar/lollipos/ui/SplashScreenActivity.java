@@ -20,6 +20,7 @@ import id.web.jagungbakar.lollipos.domain.CurrencyController;
 import id.web.jagungbakar.lollipos.domain.DateTimeStrategy;
 import id.web.jagungbakar.lollipos.domain.LanguageController;
 import id.web.jagungbakar.lollipos.domain.ParamsController;
+import id.web.jagungbakar.lollipos.domain.ProfileController;
 import id.web.jagungbakar.lollipos.domain.customer.CustomerService;
 import id.web.jagungbakar.lollipos.domain.inventory.Inventory;
 import id.web.jagungbakar.lollipos.domain.params.ParamService;
@@ -64,6 +65,7 @@ public class SplashScreenActivity extends Activity {
 		LanguageController.setDatabase(database);
 		CurrencyController.setDatabase(database);
 		ParamsController.setDatabase(database);
+		ProfileController.setDatabase(database);
 
 		Inventory.setInventoryDao(inventoryDao);
 		Register.setSaleDao(saleDao);

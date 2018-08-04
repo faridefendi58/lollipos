@@ -3,6 +3,7 @@ package id.web.jagungbakar.lollipos.ui;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -22,6 +23,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -33,9 +35,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import id.web.jagungbakar.lollipos.R;
+import id.web.jagungbakar.lollipos.domain.ProfileController;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -54,7 +59,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
      * TODO: remove after connecting to a real authentication system.
      */
     private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "faridefendi@slightsite.com:123456", "demo@localhost.com:123456"
+            "admin@localhost.com:123456"
     };
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
@@ -64,6 +69,11 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
+    private EditText nameBox;
+    private EditText phoneBox;
+    private Button mEmailSignInButton;
+    private Button signup_button;
+    private Button register_button;
     private View mProgressView;
     private View mLoginFormView;
 
@@ -100,7 +110,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             }
         });
 
-        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+        mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -110,6 +120,17 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+        nameBox = findViewById(R.id.nameBox);
+        phoneBox = findViewById(R.id.phoneBox);
+
+        signup_button = (Button) findViewById(R.id.signup_button);
+        signup_button.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                attemptRegister();
+            }
+        });
+        register_button = (Button) findViewById(R.id.register_button);
     }
 
     private void populateAutoComplete() {
@@ -320,32 +341,25 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         @Override
         protected Boolean doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
-
-            try {
-                // Simulate network access.
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                return false;
-            }
-
-            for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
-                if (pieces[0].equals(mEmail)) {
-                    // Account exists, return true if the password matches.
-                    if (pieces[1].equals(mPassword)) {
-                        SharedPreferences.Editor editor = sharedpreferences.edit();
-                        editor.putBoolean(session_status, true);
-                        editor.putString(TAG_ID, id);
-                        editor.putString(TAG_EMAIL, mEmail);
-                        editor.commit();
-
-                        return true;
-                    }
+            ContentValues admin = ProfileController.getInstance().getDataByEmail(mEmail);
+            if (admin != null) {
+                if (mPassword.equals(admin.getAsString("password"))) {
+                    SharedPreferences.Editor editor = sharedpreferences.edit();
+                    editor.putBoolean(session_status, true);
+                    editor.putString(TAG_ID, admin.getAsString("_id"));
+                    editor.putString(TAG_EMAIL, admin.getAsString("email"));
+                    editor.putString(TAG_NAME, admin.getAsString("name"));
+                    editor.commit();
+                } else {
+                    return false;
                 }
+
+                return true;
+            } else {
+                Log.e("Login", "admin : nothing");
             }
 
-            // TODO: register the new account here.
-            return true;
+            return false;
         }
 
         @Override
@@ -387,6 +401,82 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             intent.putExtra(TAG_NAME, name);
             finish();
             startActivity(intent);
+        }
+    }
+
+    public void registerRequest(View view) {
+        nameBox.setVisibility(View.VISIBLE);
+        phoneBox.setVisibility(View.VISIBLE);
+        mEmailSignInButton.setVisibility(View.GONE);
+        signup_button.setVisibility(View.VISIBLE);
+        register_button.setVisibility(View.GONE);
+    }
+
+    private void attemptRegister() {
+        if (mAuthTask != null) {
+            return;
+        }
+
+        // Reset errors.
+        mEmailView.setError(null);
+        mPasswordView.setError(null);
+
+        // Store values at the time of the login attempt.
+        String email = mEmailView.getText().toString();
+        String password = mPasswordView.getText().toString();
+        String full_name = nameBox.getText().toString();
+        String phone = phoneBox.getText().toString();
+
+        boolean cancel = false;
+        View focusView = null;
+
+        // Check for a valid password, if the user entered one.
+        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
+            mPasswordView.setError(getString(R.string.error_invalid_password));
+            focusView = mPasswordView;
+            cancel = true;
+        }
+
+        // Check for a valid email address.
+        if (TextUtils.isEmpty(email)) {
+            mEmailView.setError(getString(R.string.error_field_required));
+            focusView = mEmailView;
+            cancel = true;
+        } else if (!isEmailValid(email)) {
+            mEmailView.setError(getString(R.string.error_invalid_email));
+            focusView = mEmailView;
+            cancel = true;
+        }
+
+        if (TextUtils.isEmpty(full_name)) {
+            nameBox.setError(getString(R.string.error_field_required));
+            focusView = nameBox;
+            cancel = true;
+        }
+
+        if (TextUtils.isEmpty(phone)) {
+            phoneBox.setError(getString(R.string.error_field_required));
+            focusView = phoneBox;
+            cancel = true;
+        }
+
+        if (cancel) {
+            focusView.requestFocus();
+        } else {
+            showProgress(true);
+
+            ContentValues content = new ContentValues();
+            content.put("email", email);
+            content.put("name", full_name);
+            content.put("password", password);
+            content.put("phone", phone);
+
+            int id = ProfileController.getInstance().register(content);
+            Log.e("Register", "id : "+ id);
+            if (id > 0) {
+                mAuthTask = new UserLoginTask(email, password);
+                mAuthTask.execute((Void) null);
+            }
         }
     }
 }

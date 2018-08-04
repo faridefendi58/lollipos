@@ -145,9 +145,8 @@ public class AndroidDatabase extends SQLiteOpenHelper implements Database {
 
 				+ "_id INTEGER PRIMARY KEY,"
 				+ "name TEXT(100),"
-				+ "username TEXT(32),"
-				+ "password TEXT(256),"
 				+ "email TEXT(32),"
+				+ "password TEXT(256),"
 				+ "phone TEXT(32),"
 				+ "status INTEGER DEFAULT 1,"
 				+ "is_super_admin INTEGER DEFAULT 0,"
