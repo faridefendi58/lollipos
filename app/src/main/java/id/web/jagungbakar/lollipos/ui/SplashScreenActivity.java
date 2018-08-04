@@ -93,6 +93,8 @@ public class SplashScreenActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -106,7 +108,7 @@ public class SplashScreenActivity extends Activity {
 	private void go() {
 		gone = true;
 		Intent newActivity = new Intent(SplashScreenActivity.this,
-				MainActivity.class);
+				LoginActivity.class);
 		startActivity(newActivity);
 		SplashScreenActivity.this.finish();	
 	}
@@ -120,7 +122,6 @@ public class SplashScreenActivity extends Activity {
 	 * @param savedInstanceState
 	 */
 	private void initiateUI(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
 		setContentView(R.layout.layout_splashscreen);
 		goButton = (Button) findViewById(R.id.goButton);
 		goButton.setOnClickListener(new View.OnClickListener() {

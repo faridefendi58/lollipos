@@ -3,6 +3,7 @@ package id.web.jagungbakar.lollipos.domain;
 import java.util.List;
 
 import android.content.ContentValues;
+import android.util.Log;
 
 import id.web.jagungbakar.lollipos.techicalservices.Database;
 import id.web.jagungbakar.lollipos.techicalservices.DatabaseContents;
@@ -44,32 +45,20 @@ public class LanguageController {
 		database.execute("UPDATE " + DatabaseContents.LANGUAGE + " SET language = '" + localeString + "'");
 		//database.execute("DELETE FROM " + DatabaseContents.TABLE_SALE_LINEITEM);
 		//database.execute("DELETE FROM " + DatabaseContents.TABLE_SALE);
-		/*database.execute("DROP TABLE " + DatabaseContents.TABLE_SALE);
-		database.execute("CREATE TABLE "+ DatabaseContents.TABLE_SALE + "("
-
-				+ "_id INTEGER PRIMARY KEY,"
-				+ "status TEXT(40),"
-				+ "payment TEXT(50),"
-				+ "total DOUBLE,"
-				+ "start_time DATETIME,"
-				+ "end_time DATETIME,"
-				+ "customer_id INTEGER,"
-				+ "orders INTEGER"
-
-				+ ");");
-		Log.d("CREATE DATABASE", "Create " + DatabaseContents.TABLE_SALE + " Successfully.");
-		/*database.execute("CREATE TABLE " + DatabaseContents.TABLE_CUSTOMER + "("
+		/*database.execute("CREATE TABLE " + DatabaseContents.TABLE_ADMIN + "("
 
 				+ "_id INTEGER PRIMARY KEY,"
 				+ "name TEXT(100),"
-				+ "email TEXT(100),"
-				+ "phone TEXT(20),"
-				+ "address TEXT(256),"
-				+ "status INTEGER,"
+				+ "username TEXT(32),"
+				+ "password TEXT(256),"
+				+ "email TEXT(32),"
+				+ "phone TEXT(32),"
+				+ "status INTEGER DEFAULT 1,"
+				+ "is_super_admin INTEGER DEFAULT 0,"
 				+ "date_added DATETIME"
-
 				+ ");");
-		Log.d("CREATE DATABASE", "Create " + DatabaseContents.TABLE_CUSTOMER + " Successfully.");*/
+
+		Log.d("CREATE DATABASE", "Create " + DatabaseContents.TABLE_ADMIN + " Successfully.");*/
 	}
 	
 	/**

@@ -17,7 +17,8 @@ public enum DatabaseContents {
 	TABLE_CUSTOMER("customer"),
 	LANGUAGE("language"),
 	CURRENCY("currency"),
-	TABLE_PARAMS("params");
+	TABLE_PARAMS("params"),
+	TABLE_ADMIN("admin");
 
 	private String name;
 	

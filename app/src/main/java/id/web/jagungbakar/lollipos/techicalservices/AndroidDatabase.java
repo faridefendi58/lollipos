@@ -140,6 +140,21 @@ public class AndroidDatabase extends SQLiteOpenHelper implements Database {
 
 				+ ");");
 		Log.d("CREATE DATABASE", "Create " + DatabaseContents.TABLE_PARAMS + " Successfully.");
+
+		database.execSQL("CREATE TABLE " + DatabaseContents.TABLE_ADMIN + "("
+
+				+ "_id INTEGER PRIMARY KEY,"
+				+ "name TEXT(100),"
+				+ "username TEXT(32),"
+				+ "password TEXT(256),"
+				+ "email TEXT(32),"
+				+ "phone TEXT(32),"
+				+ "status INTEGER DEFAULT 1,"
+				+ "is_super_admin INTEGER DEFAULT 0,"
+				+ "date_added DATETIME"
+				+ ");");
+
+		Log.d("CREATE DATABASE", "Create " + DatabaseContents.TABLE_ADMIN + " Successfully.");
 		
 		Log.d("CREATE DATABASE", "Create Database Successfully.");
 
