@@ -54,7 +54,8 @@ public class ProfileController {
 
 
     public ContentValues getDataByEmail(String email) {
-        List<Object> contents = database.select("SELECT * FROM " + DatabaseContents.TABLE_ADMIN);
+        String queryString = "SELECT * FROM " + DatabaseContents.TABLE_ADMIN + " WHERE email = '"+ email +"'";
+        List<Object> contents = database.select(queryString);
 
         if (contents.isEmpty()) {
             return null;

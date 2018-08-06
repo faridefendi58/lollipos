@@ -55,13 +55,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     private static final int REQUEST_READ_CONTACTS = 0;
 
     /**
-     * A dummy authentication store containing known user names and passwords.
-     * TODO: remove after connecting to a real authentication system.
-     */
-    private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "admin@localhost.com:123456"
-    };
-    /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
     private UserLoginTask mAuthTask = null;
@@ -69,11 +62,13 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
+    private EditText passwordRepeat;
     private EditText nameBox;
     private EditText phoneBox;
     private Button mEmailSignInButton;
     private Button signup_button;
     private Button register_button;
+    private Button signin_button;
     private View mProgressView;
     private View mLoginFormView;
 
@@ -131,6 +126,8 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             }
         });
         register_button = (Button) findViewById(R.id.register_button);
+        signin_button = (Button) findViewById(R.id.signin_button);
+        passwordRepeat = (EditText) findViewById(R.id.passwordRepeat);
     }
 
     private void populateAutoComplete() {
@@ -355,8 +352,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                 }
 
                 return true;
-            } else {
-                Log.e("Login", "admin : nothing");
             }
 
             return false;
@@ -410,6 +405,18 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         mEmailSignInButton.setVisibility(View.GONE);
         signup_button.setVisibility(View.VISIBLE);
         register_button.setVisibility(View.GONE);
+        signin_button.setVisibility(View.VISIBLE);
+        passwordRepeat.setVisibility(View.VISIBLE);
+    }
+
+    public void signinRequest(View view) {
+        nameBox.setVisibility(View.GONE);
+        phoneBox.setVisibility(View.GONE);
+        mEmailSignInButton.setVisibility(View.VISIBLE);
+        signup_button.setVisibility(View.GONE);
+        register_button.setVisibility(View.VISIBLE);
+        signin_button.setVisibility(View.GONE);
+        passwordRepeat.setVisibility(View.GONE);
     }
 
     private void attemptRegister() {
@@ -424,6 +431,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         // Store values at the time of the login attempt.
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
+        String password_repeat = passwordRepeat.getText().toString();
         String full_name = nameBox.getText().toString();
         String phone = phoneBox.getText().toString();
 
@@ -437,6 +445,18 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             cancel = true;
         }
 
+        if (!TextUtils.isEmpty(password_repeat) && !isPasswordValid(password_repeat)) {
+            passwordRepeat.setError(getString(R.string.error_invalid_password));
+            focusView = passwordRepeat;
+            cancel = true;
+        }
+
+        if (!password_repeat.equals(password)) {
+            passwordRepeat.setError(getString(R.string.error_invalid_password_repeat));
+            focusView = passwordRepeat;
+            cancel = true;
+        }
+
         // Check for a valid email address.
         if (TextUtils.isEmpty(email)) {
             mEmailView.setError(getString(R.string.error_field_required));
@@ -446,6 +466,13 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             mEmailView.setError(getString(R.string.error_invalid_email));
             focusView = mEmailView;
             cancel = true;
+        } else {
+            ContentValues adminData = ProfileController.getInstance().getDataByEmail(email);
+            if (adminData != null) {
+                mEmailView.setError(getString(R.string.error_unavailable_email));
+                focusView = mEmailView;
+                cancel = true;
+            }
         }
 
         if (TextUtils.isEmpty(full_name)) {
@@ -472,7 +499,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             content.put("phone", phone);
 
             int id = ProfileController.getInstance().register(content);
-            Log.e("Register", "id : "+ id);
+            //Log.e("Register", "id : "+ id);
             if (id > 0) {
                 mAuthTask = new UserLoginTask(email, password);
                 mAuthTask.execute((Void) null);

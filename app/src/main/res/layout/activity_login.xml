@@ -29,10 +29,23 @@
             android:id="@+id/email_login_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_below="@+id/logo_container">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:text="@string/login_header_information"
+                android:layout_marginVertical="10dp"
+                android:padding="8dp"
+                android:background="@color/alertInfo"
+                android:textColor="@color/alertInfoFontColor"/>
 
             <AutoCompleteTextView
                 android:id="@+id/email"
+                style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/prompt_email"
@@ -42,6 +55,7 @@
 
             <EditText
                 android:id="@+id/password"
+                style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/prompt_password"
@@ -53,7 +67,22 @@
                 android:singleLine="true" />
 
             <EditText
+                android:id="@+id/passwordRepeat"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/prompt_password_repeat"
+                android:imeActionId="6"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionUnspecified"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:visibility="gone"/>
+
+            <EditText
                 android:id="@+id/nameBox"
+                style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/prompt_name"
@@ -67,6 +96,7 @@
 
             <EditText
                 android:id="@+id/phoneBox"
+                style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/prompt_phone"
@@ -92,7 +122,9 @@
                     android:layout_marginTop="16dp"
                     android:text="@string/action_sign_in_short"
                     android:textStyle="bold"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:background="@color/btnInfo"
+                    android:textColor="@color/colorWhite"/>
 
                 <Button
                     android:id="@+id/register_button"
@@ -114,7 +146,22 @@
                     android:layout_marginTop="16dp"
                     android:text="@string/action_submit"
                     android:textStyle="bold"
-                    android:layout_weight="1"
+                    android:layout_weight="0.75"
+                    android:visibility="gone"
+                    android:background="@color/btnInfo"
+                    android:textColor="@color/colorWhite"/>
+
+                <Button
+                    android:id="@+id/signin_button"
+                    style="?android:textAppearanceSmall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/action_have_account"
+                    android:layout_weight="1.25"
+                    android:background="@android:color/transparent"
+                    android:onClick="signinRequest"
+                    android:clickable="true"
                     android:visibility="gone"/>
 
             </LinearLayout>
