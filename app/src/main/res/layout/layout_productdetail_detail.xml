@@ -113,11 +113,13 @@
             style="@style/ButtonText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/btn_green"
+            android:background="@color/btnSuccess"
             android:text="@string/edit"
             android:drawableLeft="@drawable/ic_edit_white_24dp"
             android:layout_gravity="center"
-            android:layout_weight="0.5"/>
+            android:layout_weight="0.5"
+            android:paddingHorizontal="10dp"
+            />
 
     </LinearLayout>
 
@@ -132,8 +134,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:background="@drawable/btn_red"
+            android:background="@color/btnDanger"
             android:drawableLeft="@drawable/ic_cancel_white_24dp"
+            android:paddingHorizontal="10dp"
             android:text="@string/cancel" />
 
         <Button
@@ -142,8 +145,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:background="@drawable/btn_purple"
+            android:background="@color/btnInfo"
             android:drawableLeft="@drawable/ic_save_white_24dp"
+            android:paddingHorizontal="10dp"
             android:text="@string/save" />
     </LinearLayout>
 

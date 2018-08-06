@@ -48,6 +48,7 @@
 
         <Button
             android:id="@+id/addProductLotButton"
+            style="?android:textAppearanceSmall"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
@@ -57,6 +58,7 @@
 
         <Button
             android:id="@+id/addProductDiscountButton"
+            style="?android:textAppearanceSmall"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.5"

@@ -69,6 +69,8 @@ public class AddCustomerDialogFragment extends DialogFragment {
         confirmButton = (Button) v.findViewById(R.id.confirmButton);
         clearButton = (Button) v.findViewById(R.id.clearButton);
 
+        getDialog().getWindow().setTitle(res.getString(R.string.add_new_customer));
+
         initUI();
         return v;
     }

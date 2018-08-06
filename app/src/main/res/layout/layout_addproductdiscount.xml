@@ -3,7 +3,7 @@
     android:id="@+id/addProductDiscount_dialog"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="5dp"
+    android:padding="10dp"
     android:orientation="vertical" >
 
     <TextView
@@ -61,9 +61,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:background="@drawable/btn_red"
-            android:text="@string/clear"
-            android:textSize="20sp" />
+            android:background="@color/btnDanger"
+            android:text="@string/cancel"
+            android:textSize="20sp"
+            android:paddingHorizontal="10dp"/>
 
         <Button
             android:id="@+id/confirmButton"
@@ -71,9 +72,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:background="@drawable/btn_green"
-            android:text="@string/confirm"
-            android:textSize="20sp" />
+            android:background="@color/btnInfo"
+            android:text="@string/action_submit"
+            android:textSize="20sp"
+            android:paddingHorizontal="10dp"/>
 
     </LinearLayout>
 
