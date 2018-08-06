@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="5dip" >
+    android:padding="10dp" >
 
     <TextView
         android:id="@+id/TextView01"
@@ -77,9 +77,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:background="@drawable/btn_red"
+            android:background="@color/btnDanger"
             android:text="@string/cancel"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:paddingHorizontal="10dp"/>
 
         <Button
             android:id="@+id/confirmButton"
@@ -87,9 +88,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:background="@drawable/btn_green"
+            android:background="@color/btnInfo"
             android:text="@string/save"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:paddingHorizontal="10dp"/>
     </LinearLayout>
 
 </LinearLayout>

@@ -98,4 +98,8 @@ public interface SaleDao {
 	List<Sale> getAllSaleByCustomerId(int id);
 
 	void removeSale(Sale sale);
+
+	int getTotalIncome(String time_frame);
+
+	int getTotalTransaction(String time_frame);
 }

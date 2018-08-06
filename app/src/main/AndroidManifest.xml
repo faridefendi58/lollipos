@@ -2,26 +2,34 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="id.web.jagungbakar.lollipos"
     android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionName="1.0">
 
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="19" />
 
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+
     <application
         android:allowBackup="true"
-        android:label="@string/app_name"
         android:icon="@drawable/ic_launcher"
-        android:theme="@style/AppTheme" >
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
         <activity
-            android:name="id.web.jagungbakar.lollipos.ui.MainActivity"
+            android:name=".ui.MainActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
-            android:name="id.web.jagungbakar.lollipos.ui.SplashScreenActivity"
+            android:name=".ui.SplashScreenActivity"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,17 +37,24 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="id.web.jagungbakar.lollipos.ui.inventory.ProductDetailActivity"
+            android:name=".ui.inventory.ProductDetailActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="id.web.jagungbakar.lollipos.ui.sale.SaleDetailActivity"
+            android:name=".ui.sale.SaleDetailActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="id.web.jagungbakar.lollipos.ui.customer.CustomerDetailActivity"
+            android:name=".ui.customer.CustomerDetailActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="id.web.jagungbakar.lollipos.ui.params.ParamsActivity"
+            android:name=".ui.params.ParamsActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.DashboardActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+        <activity
+            android:name=".ui.LoginActivity"
+            android:label="@string/title_activity_login"></activity>
     </application>
 
 </manifest>

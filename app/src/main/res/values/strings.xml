@@ -3,7 +3,15 @@
 
     <string name="app_name">LolliPOS</string>
     <string name="greeting">Welcome To LolliPOS</string>
+
     <string name="action_settings">Settings</string>
+    <string name="action_help">Help</string>
+    <string name="action_profile">Profile</string>
+    <string name="action_shop">Shop</string>
+    <string name="action_printer">Printer and Receipt</string>
+    <string name="action_syncronize">Sincronize</string>
+    <string name="action_logout">Logout</string>
+
     <string name="total">Total</string>
     <string name="barcode">Barcode</string>
     <string name="cancel">Cancel</string>
@@ -70,6 +78,15 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_transaction">Transaction</string>
+    <string name="title_reports">Reports</string>
+
+    <string name="dashboard_income">Income</string>
+    <string name="dashboard_transaction">Transaction</string>
+    <string name="dashboard_today">Today</string>
+    <string name="dashboard_yesterday">Yesterday</string>
+    <string name="dashboard_this_month">This Month</string>
+    <string name="dashboard_previous_month">Previous Month</string>
 
     <string name="lang_en">English</string>
     <string name="lang_id">Bahasa Indonesia</string>
@@ -104,5 +121,30 @@
         <item name="android:shadowDy">1</item>
         <item name="android:shadowRadius">2</item>
     </style>
+
+    <string name="title_activity_login">Sign in or create an account</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_password_repeat">Password (Repeat)</string>
+    <string name="prompt_name">Full Name</string>
+    <string name="prompt_phone">Phone Number</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="action_register">Create new account?</string>
+    <string name="action_have_account">Already have an account?</string>
+    <string name="action_submit">Submit</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_unavailable_email">This email address is already exist</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_invalid_password_repeat">Please repeat your password correctly</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="login_header_information">Please fill in this form with your login account,
+        or create an account first to be able to use this application.</string>
 
 </resources>

@@ -8,6 +8,7 @@ import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -70,6 +71,9 @@ public class AddProductDialogFragment extends DialogFragment {
 		nameBox = (EditText) v.findViewById(R.id.nameBox);
 		confirmButton = (Button) v.findViewById(R.id.confirmButton);
 		clearButton = (Button) v.findViewById(R.id.clearButton);
+
+		//getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+		getDialog().getWindow().setTitle(res.getString(R.string.add_new_product));
 
 		initUI();
 		return v;

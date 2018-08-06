@@ -48,20 +48,22 @@
 
         <Button
             android:id="@+id/addProductLotButton"
-            style="@style/ButtonText"
+            style="?android:textAppearanceSmall"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:background="@drawable/btn_green"
+            android:drawableTop="@drawable/ic_add_new"
+            android:background="@android:color/transparent"
             android:text="@string/add_stock" />
 
         <Button
             android:id="@+id/addProductDiscountButton"
-            style="@style/ButtonText"
+            style="?android:textAppearanceSmall"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:background="@drawable/btn_blue"
+            android:drawableTop="@drawable/ic_add_discount"
+            android:background="@android:color/transparent"
             android:text="@string/add_discount" />
     </LinearLayout>
 

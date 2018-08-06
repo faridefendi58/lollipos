@@ -3,7 +3,15 @@
 
     <string name="app_name">LolliPOS</string>
     <string name="grreting">Welcome To LolliPOS</string>
-    <string name="action_settings">Peralatan</string>
+
+    <string name="action_settings">Pengaturan</string>
+    <string name="action_help">Bantuan</string>
+    <string name="action_profile">Profil</string>
+    <string name="action_shop">Toko</string>
+    <string name="action_printer">Printer dan Struk</string>
+    <string name="action_syncronize">Sinkronisasi</string>
+    <string name="action_logout">Logout</string>
+
     <string name="total">Total</string>
     <string name="barcode">Barcode</string>
     <string name="cancel">Batal</string>
@@ -68,8 +76,17 @@
     <string name="invoice_detail">Rincian Tagihan</string>
 
     <string name="title_home">Beranda</string>
-    <string name="title_dashboard">Dasbor</string>
+    <string name="title_dashboard">Dasboard</string>
     <string name="title_notifications">Notifikasi</string>
+    <string name="title_transaction">Transaksi</string>
+    <string name="title_reports">Laporan</string>
+
+    <string name="dashboard_income">Pendapatan</string>
+    <string name="dashboard_transaction">Transaksi</string>
+    <string name="dashboard_today">Hari Ini</string>
+    <string name="dashboard_yesterday">Kemarin</string>
+    <string name="dashboard_this_month">Bulan Ini</string>
+    <string name="dashboard_previous_month">Bulan Lalu</string>
 
     <string name="lang_en">English</string>
     <string name="lang_id">Bahasa Indonesia</string>
@@ -104,5 +121,28 @@
         <item name="android:shadowDy">1</item>
         <item name="android:shadowRadius">2</item>
     </style>
+
+    <string name="title_activity_login">Masuk atau buat akun baru</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_password_repeat">Password (Diulang)</string>
+    <string name="prompt_name">Nama Lengkap</string>
+    <string name="prompt_phone">Nomor Telepon</string>
+    <string name="action_sign_in">Masuk atau mendaftar</string>
+    <string name="action_sign_in_short">Masuk</string>
+    <string name="action_register">Buat akun baru?</string>
+    <string name="action_have_account">Sudah memiliki akun?</string>
+    <string name="action_submit">Simpan</string>
+    <string name="error_invalid_email">Alamat email tidak valid</string>
+    <string name="error_unavailable_email">Email ini sudah pernah terdaftar</string>
+    <string name="error_invalid_password">Password terlalu pendek</string>
+    <string name="error_invalid_password_repeat">Silakan ulangi password dengan benar</string>
+    <string name="error_incorrect_password">Password tidak sesuai</string>
+    <string name="error_field_required">Kolom ini tidak boleh dikosongi</string>
+    <string name="permission_rationale">"Izin kontak diperlukan untuk menyediakan penyelesaian email."</string>
+    <string name="login_header_information">Isilah form ini dengan akun login anda,
+        atau buat akun terlebih dahulu untuk dapat menggunakan aplikasi ini.</string>
 
 </resources>
