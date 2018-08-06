@@ -1,5 +1,7 @@
 package id.web.jagungbakar.lollipos.ui;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +15,8 @@ import android.view.MenuItem;
 import id.web.jagungbakar.lollipos.R;
 import id.web.jagungbakar.lollipos.ui.dashboard.DashboardFragment;
 import id.web.jagungbakar.lollipos.ui.dashboard.ReportFragment;
+import id.web.jagungbakar.lollipos.ui.params.ParamsActivity;
+import id.web.jagungbakar.lollipos.ui.profile.ProfileActivity;
 
 public class DashboardActivity extends AppCompatActivity
         implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -81,6 +85,49 @@ public class DashboardActivity extends AppCompatActivity
         MenuItem item = menu.findItem(R.id.navigation_home);
         item.setVisible(false);
 
+        MenuItem language = menu.findItem(R.id.language);
+        language.setVisible(false);
+
+        MenuItem currency = menu.findItem(R.id.currency);
+        currency.setVisible(false);
+
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
+        switch (item.getItemId()) {
+            case R.id.params:
+                Intent newActivity = new Intent(DashboardActivity.this,
+                        ParamsActivity.class);
+                startActivity(newActivity);
+                return true;
+            case R.id.navigation_home:
+                intent = new Intent(DashboardActivity.this, DashboardActivity.class);
+                finish();
+                startActivity(intent);
+                return true;
+            case R.id.logout:
+                SharedPreferences sharedpreferences = getSharedPreferences(LoginActivity.my_shared_preferences, Context.MODE_PRIVATE);
+
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+                editor.putBoolean(LoginActivity.session_status, false);
+                editor.putString(LoginActivity.TAG_ID, null);
+                editor.putString(LoginActivity.TAG_EMAIL, null);
+                editor.commit();
+
+                intent = new Intent(DashboardActivity.this, LoginActivity.class);
+                finish();
+                startActivity(intent);
+                return true;
+            case R.id.profile:
+                intent = new Intent(DashboardActivity.this, ProfileActivity.class);
+                finish();
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

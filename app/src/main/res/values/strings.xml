@@ -140,11 +140,29 @@
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_invalid_password_repeat">Please repeat your password correctly</string>
     <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_old_password">The old password is incorrect</string>
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
     <string name="login_header_information">Please fill in this form with your login account,
         or create an account first to be able to use this application.</string>
+
+    <string name="title_activity_profile">Profile</string>
+    <string name="tab_profile_data">Profile Data</string>
+    <string name="tab_profile_password">Change Password</string>
+
+    <string name="txt_form_requirement">Please complete the following input :</string>
+
+    <string name="label_profile_name">Full Name :</string>
+    <string name="label_profile_email">Email Address :</string>
+    <string name="label_profile_phone">Telephone :</string>
+    <string name="label_old_password">Old Password :</string>
+    <string name="label_new_password">New Password :</string>
+    <string name="label_new_password_confirm">New Password (repeat) :</string>
+
+    <string name="message_success_save">Your data has been successfully saved.</string>
+    <string name="message_success_update">Your data has been successfully updated.</string>
+    <string name="message_success_change_password">Your password has been successfully changed.</string>
 
 </resources>
