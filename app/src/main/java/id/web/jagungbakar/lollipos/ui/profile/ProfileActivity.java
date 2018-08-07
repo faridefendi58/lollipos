@@ -5,12 +5,10 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActionBar;
 
-import android.app.LoaderManager.LoaderCallbacks;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -30,6 +28,7 @@ import id.web.jagungbakar.lollipos.ui.LoginActivity;
 public class ProfileActivity extends Activity {
 
     private SharedPreferences sharedpreferences;
+    private SharedPreferences.Editor editor;
     private ContentValues adminData;
 
     private TabHost mTabHost;
@@ -169,6 +168,13 @@ public class ProfileActivity extends Activity {
 
             boolean updated = ProfileController.getInstance().update(content);
             if (updated) {
+                adminData = ProfileController.getInstance().getDataByEmail(email);
+
+                editor.putString(LoginActivity.TAG_NAME, name);
+                editor.putString(LoginActivity.TAG_EMAIL, email);
+                editor.putString(LoginActivity.TAG_PHONE, phone);
+                editor.commit();
+
                 Toast.makeText(ProfileActivity.this,
                         getResources().getString(R.string.message_success_update),
                         Toast.LENGTH_SHORT).show();
@@ -179,6 +185,7 @@ public class ProfileActivity extends Activity {
     public void updatePassword(View view) {
         boolean cancel = false;
         View focusView = null;
+        editor = sharedpreferences.edit();
 
         String old_password = input_old_password.getText().toString();
         String new_password = input_new_password.getText().toString();
@@ -201,12 +208,6 @@ public class ProfileActivity extends Activity {
             input_new_password.setError(getString(R.string.error_field_required));
             focusView = input_new_password;
             cancel = true;
-        } else {
-            /*if (LoginActivity.isPasswordValid(new_password)) {
-                input_new_password.setError(getString(R.string.error_invalid_password));
-                focusView = input_new_password;
-                cancel = true;
-            }*/
         }
 
         if (TextUtils.isEmpty(new_password_confirm)) {
@@ -221,6 +222,12 @@ public class ProfileActivity extends Activity {
             cancel = true;
         }
 
+        /*if (LoginActivity.isPasswordValid(new_password)) {
+            input_new_password.setError(getString(R.string.error_invalid_password));
+            focusView = input_new_password;
+            cancel = true;
+        }*/
+
         if (cancel) {
             // There was an error; don't attempt login and focus the first
             // form field with an error.
@@ -232,6 +239,11 @@ public class ProfileActivity extends Activity {
 
             boolean updated = ProfileController.getInstance().update(content);
             if (updated) {
+                adminData = ProfileController.getInstance().getDataByEmail(
+                        sharedpreferences.getString(LoginActivity.TAG_EMAIL, null));
+                editor.putString(LoginActivity.TAG_PASSWORD, new_password);
+                editor.commit();
+
                 Toast.makeText(ProfileActivity.this,
                         getResources().getString(R.string.message_success_change_password),
                         Toast.LENGTH_SHORT).show();
