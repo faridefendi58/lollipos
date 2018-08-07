@@ -40,6 +40,7 @@ import java.util.List;
 import java.util.Map;
 
 import id.web.jagungbakar.lollipos.R;
+import id.web.jagungbakar.lollipos.domain.DateTimeStrategy;
 import id.web.jagungbakar.lollipos.domain.ProfileController;
 
 import static android.Manifest.permission.READ_CONTACTS;
@@ -75,6 +76,8 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     public final static String TAG_ID = "id";
     public final static String TAG_EMAIL = "email";
     public final static String TAG_NAME = "name";
+    public final static String TAG_PHONE = "phone";
+    public final static String TAG_PASSWORD = "password";
 
     SharedPreferences sharedpreferences;
     Boolean session = false;
@@ -221,14 +224,14 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         }
     }
 
-    private boolean isEmailValid(String email) {
+    public static boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
         return email.contains("@");
     }
 
-    private boolean isPasswordValid(String password) {
+    public static boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
-        return password.length() > 4;
+        return password.length() > 2;
     }
 
     /**
@@ -497,9 +500,9 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             content.put("name", full_name);
             content.put("password", password);
             content.put("phone", phone);
+            content.put("date_added", DateTimeStrategy.getCurrentTime());
 
             int id = ProfileController.getInstance().register(content);
-            //Log.e("Register", "id : "+ id);
             if (id > 0) {
                 mAuthTask = new UserLoginTask(email, password);
                 mAuthTask.execute((Void) null);

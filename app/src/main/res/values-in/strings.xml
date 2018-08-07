@@ -141,8 +141,25 @@
     <string name="error_invalid_password_repeat">Silakan ulangi password dengan benar</string>
     <string name="error_incorrect_password">Password tidak sesuai</string>
     <string name="error_field_required">Kolom ini tidak boleh dikosongi</string>
+    <string name="error_old_password">Password lama salah</string>
     <string name="permission_rationale">"Izin kontak diperlukan untuk menyediakan penyelesaian email."</string>
     <string name="login_header_information">Isilah form ini dengan akun login anda,
         atau buat akun terlebih dahulu untuk dapat menggunakan aplikasi ini.</string>
 
+    <string name="title_activity_profile">Profil</string>
+    <string name="tab_profile_data">Ubah Profil</string>
+    <string name="tab_profile_password">Ubah Password</string>
+
+    <string name="txt_form_requirement">Silakan lengkapi beberapa isian berikut :</string>
+
+    <string name="label_profile_name">Nama Lengkap :</string>
+    <string name="label_profile_email">Alamat Email :</string>
+    <string name="label_profile_phone">No Telepon :</string>
+    <string name="label_old_password">Password Lama :</string>
+    <string name="label_new_password">Password Baru :</string>
+    <string name="label_new_password_confirm">Password Baru (diulang) :</string>
+
+    <string name="message_success_save">Data Anda telah berhasil disimpan.</string>
+    <string name="message_success_update">Data Anda telah berhasil diubah.</string>
+    <string name="message_success_change_password">Password Anda telah berhasil diubah.</string>
 </resources>

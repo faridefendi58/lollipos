@@ -76,4 +76,10 @@ public class ProfileController {
 
         return id;
     }
+
+    public boolean update(ContentValues content) {
+        boolean update = database.update(DatabaseContents.TABLE_ADMIN.toString(), content);
+
+        return update;
+    }
 }
